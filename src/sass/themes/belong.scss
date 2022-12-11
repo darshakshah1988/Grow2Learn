@@ -1,0 +1,23 @@
+.belong {
+    .Admin__sidebar,
+    .Mobile__header {
+      background: #303275;
+    }
+  
+    .btn--primary {
+      background: #EF7F1A;
+    }
+  
+    .CourseMenu__link.router-link-active {
+      border-left-color: #1BA63F;
+    }
+  
+    .Menu {
+      background: #24255d;
+      
+    }
+  
+    .Menu__link:hover {
+      background: #1BA63F;
+    }
+  }

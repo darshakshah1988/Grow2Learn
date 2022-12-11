@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Grass types",
+    "content": "Buffalo grass is a long standing favourite lawn type in Australia, it is known to be durable and easy to grow and maintain, and of course… Buffalo grass is best known for its very wide leaf blade. \nBuffalo grass lawns often led to many complaints in days gone by about it's scratchy nature which was often highly irritating to the skin, especially to the skin of young children who played on it the most. \nThankfully those days are long past us since the introduction of many quality Soft Leaf Buffalo lawn types. These new soft Buffalo grasses no are longer irritating, are very soft and inviting for play, and can make a beautiful, lush lawn when cared for properly.owing a lawn",
+    "evidence_task": "Capture evidence of yourself mowing a Buffalo lawn.",
+    "quiz": [
+      {
+        "question": "What is the recommended length to cut Green Couch?",
+        "answers": [
+          { "text": "25 - 30mm", "correct": true },
+          { "text": "40mm", "correct": false },
+          { "text": "40 - 45mm", "correct": false }
+        ]
+      },
+      {
+        "question": "What is the recommended length to cut Zoysia?",
+        "answers": [
+          { "text": "25 - 30mm", "correct": false },
+          { "text": "40mm", "correct": true },
+          { "text": "40 - 45mm", "correct": false }
+        ]
+      },
+      {
+        "question": "What is the recommended length to cut Buffalo?",
+        "answers": [
+          { "text": "25 - 30mm", "correct": false },
+          { "text": "40mm", "correct": false },
+          { "text": "40 - 45mm", "correct": true }
+        ]
+      }
+    ],
+    "media": "",
+    "unitId": "1"
+  }
+]

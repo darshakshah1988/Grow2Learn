@@ -1,0 +1,5 @@
+<div class="ProgressBar" :style="{ height: `${height}rem` }">
+  <span class="ProgressBar__text" v-if="showLabel">{{ completed }} / {{ total }} <span
+          v-if="collection">{{ collection }}</span></span>
+  <div class="ProgressBar__bar" v-bind:style="{ transform: 'translateX(' + computedProgress + '%)' }"></div>
+</div>

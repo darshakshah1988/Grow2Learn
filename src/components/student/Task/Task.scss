@@ -1,0 +1,16 @@
+.Task {
+  background: #fff;
+  padding: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.Task__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+}

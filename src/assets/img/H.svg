@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="70px" height="72px" viewBox="0 0 70 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>H</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#15DC5A" offset="0%"></stop>
+            <stop stop-color="#09B669" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="64" height="64" rx="2"></rect>
+        <filter x="-6.2%" y="-6.2%" width="112.5%" height="115.6%" filterUnits="objectBoundingBox" id="filter-4">
+            <feMorphology radius="3" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feComposite in="shadowOffsetOuter1" in2="SourceAlpha" operator="out" result="shadowOffsetOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.0602490785   0 0 0 0 0.496731505   0 0 0 0 0.30245898  0 0 0 1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+        <path d="M37.2413793,27.5862069 L37.2413793,16.1724138 C37.2413793,15.620129 37.6890946,15.1724138 38.2413793,15.1724138 L49.4827586,15.1724138 C50.0350434,15.1724138 50.4827586,15.620129 50.4827586,16.1724138 L50.4827586,47.5517241 C50.4827586,48.1040089 50.0350434,48.5517241 49.4827586,48.5517241 L38.2413793,48.5517241 C37.6890946,48.5517241 37.2413793,48.1040089 37.2413793,47.5517241 L37.2413793,37.5172414 L26.7586207,37.5172414 L26.7586207,47.5517241 C26.7586207,48.1040089 26.3109054,48.5517241 25.7586207,48.5517241 L14.7931034,48.5517241 C14.2408187,48.5517241 13.7931034,48.1040089 13.7931034,47.5517241 L13.7931034,16.1724138 C13.7931034,15.620129 14.2408187,15.1724138 14.7931034,15.1724138 L25.7586207,15.1724138 C26.3109054,15.1724138 26.7586207,15.620129 26.7586207,16.1724138 L26.7586207,27.5862069 L37.2413793,27.5862069 Z" id="path-5"></path>
+        <filter x="-2.7%" y="-3.0%" width="105.5%" height="112.0%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.175498188 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="H" transform="translate(3.000000, 3.000000)">
+            <mask id="mask-3" fill="white">
+                <use xlink:href="#path-2"></use>
+            </mask>
+            <g id="Rectangle-2">
+                <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-2"></use>
+                <rect stroke="url(#linearGradient-1)" stroke-width="3" fill="#0BAB64" fill-rule="evenodd" x="-1.5" y="-1.5" width="67" height="67" rx="2"></rect>
+            </g>
+            <rect id="Rectangle-2" fill="#09B669" mask="url(#mask-3)" x="0" y="32" width="64" height="32"></rect>
+            <g id="Rectangle-3" mask="url(#mask-3)">
+                <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+            </g>
+        </g>
+    </g>
+</svg>

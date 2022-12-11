@@ -1,0 +1,7 @@
+Welcome {{name}},
+
+https://adminohapp.com/confirm?token={{token}}
+
+Regards,
+Adminoh
+ 

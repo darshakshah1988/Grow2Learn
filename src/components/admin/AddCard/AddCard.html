@@ -1,0 +1,15 @@
+<transition name="Modal">
+  <Modal @close="$emit('close')">
+    <Card slot="body" title="Add a card">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <label class="label" for="card-name">Name</label>
+          <input type="text" class="input" id="card-name" v-model="name" v-focus="modals.addCard" autocomplete="off" required>
+        </div>
+        <div class="form__footer">
+          <button class="btn btn--block" :disabled="submitting">Create</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

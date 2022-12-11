@@ -1,0 +1,15 @@
+@import "../../../sass/variables.scss";
+
+.StudentOnboard {
+  height: 100vh;
+  background-image: linear-gradient(315deg, #4c4177 0%, #2a5470 74%);
+  padding: 2rem;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    color: lighten($green, 5);
+    font-weight: 500;
+  }
+}

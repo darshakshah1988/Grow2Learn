@@ -1,0 +1,20 @@
+[
+  {
+    "first_name": "Simon",
+    "last_name": "Lang",
+    "email": "me@simonlang.org",
+    "password": "password"
+  },
+  {
+    "first_name": "Student",
+    "last_name": "A",
+    "email": "a@a",
+    "password": "a"
+  },
+  {
+    "first_name": "Student",
+    "last_name": "B",
+    "email": "b@b",
+    "password": "b"
+  }
+]

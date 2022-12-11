@@ -1,0 +1,6 @@
+Current Plan: {{current_plan}}
+Downgraded Plan: {{downgraded_plan}}
+Name: {{name}}
+Email: {{email}}
+First Name: {{first_name}}
+Last Name: {{last_name}}

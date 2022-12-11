@@ -1,0 +1,42 @@
+<div class="StudentCourse" v-if="course">
+  <ProgressBar class="flat" v-if="course.CourseStudent" :completed="course.CourseStudent.completedUnits || 0" :total="course.units.length" collection="Units"></ProgressBar>
+  <div class="StudentCourse__wrap container">
+    <div
+      :class="unitClass(unitIndex)"
+      v-for="(unit, unitIndex) in sortedUnits"
+      v-if="unit.cards && unit.cards.length > 0">
+      <div class="StudentCourse__header" @click="setCurrentUnitIndex(unitIndex)">
+        <div class="flex flex--aligned StudentCourse__title">
+          <i class="icon unit"></i>
+          <h4 class="flat">
+            {{ unit.name }}
+          </h4>
+        </div>
+        <div v-show="course.units.length > 1">
+          <i class="fal fa-plus StudentCourse__arrow" v-show="unitIndex != currentUnitIndex"></i>
+          <i class="fal fa-minus StudentCourse__arrow" v-show="unitIndex === currentUnitIndex"></i>
+        </div>
+      </div>
+      <div class="StudentCourse__body">
+        <div
+          v-for="(card, cardIndex) in unit.cards"
+          :key="card.id">
+          <span v-if="cardIndex > unit.progress.completedLength"
+            :class="cardClass(unit, cardIndex)"
+            >
+            {{ card.name }}
+            <i class="icon card-complete"></i>
+          </span>
+          <router-link
+            :class="cardClass(unit, cardIndex)"
+            v-if="cardIndex <= unit.progress.completedLength"
+            :to="{ name: 'studentCard', params: { courseId: courseId, unitId: unit.id, cardId: card.id }}"
+            >
+            {{ card.name }}
+            <i class="icon card-complete"></i>
+          </router-link>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

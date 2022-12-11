@@ -1,0 +1,14 @@
+<header class="Header">
+  <router-link class="Logo" to="/dashboard">
+    <div class="Logo__icon"></div>
+    Grow2
+  </router-link>
+  <a href="#" v-if="!authed" class="btn btn--small Header__btn">Sign in</a>
+  <div class="flex flex--aligned" v-if="authed">
+    <router-link to="/login">
+      <div class="User">
+        <div class="User__avatar">J</div>
+      </div>
+    </router-link>
+  </div>
+</header>

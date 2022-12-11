@@ -1,0 +1,30 @@
+$color: #333;
+
+$offWhite: #f9f9f9;
+$green: #0BAB64;
+$blue: #2e4375;
+$lightBlue: #3e8ae4;
+$red: #ff3f31;
+$orange: #ff7822;
+
+$radius: 0.25rem;
+$textShadow: 0 1px 1px rgba(0,0,0,0.1);
+$boxShadow: 0 1px 1px rgba(0,0,0,0.5);
+$boxShadowLight: 0 1px 1px rgba(0,0,0,0.2);
+$boxShadowHover: 0 1px 1px rgba(0,0,0,0.5), 0 3px 6px rgba(0,0,0,0.15);
+$boxShadowFloat: 0 5px 10px rgba(0,0,0,0.15);
+
+@mixin font-size($sizeValue: 1.6) {
+  font-size: ($sizeValue * 10) + px;
+  font-size: $sizeValue + rem;
+}
+
+@mixin width($sizeValue: 1.6) {
+  width: ($sizeValue * 10) + px;
+  width: $sizeValue + rem;
+}
+
+@mixin height($sizeValue: 1.6) {
+  height: ($sizeValue * 10) + px;
+  height: $sizeValue + rem;
+}

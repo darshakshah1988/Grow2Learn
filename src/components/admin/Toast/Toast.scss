@@ -1,0 +1,46 @@
+@import "../../../sass/variables.scss";
+
+.Toast {
+  position: fixed;
+  bottom: calc(100% + 20px);
+  left: 50%;
+  margin-left: calc(-18.75rem / 2);
+  padding: 1rem;
+  transition: transform 375ms ease;  
+  background: #fff;
+  box-shadow: $boxShadowFloat;
+  width: 100%;
+  max-width: 25rem;
+  font-size: 0.875rem;
+  z-index: 9999;
+}
+
+.Toast i {
+  margin-right: 0.5rem;
+}
+
+.Toast--success .Toast__icon,
+.Toast--success .Toast__title {
+  color: $green;
+}
+
+.Toast--visible {
+  transform: translateY(calc(100% + 20px + 1rem));
+}
+
+.Toast__close {
+  position: absolute;
+  top: 1rem;
+  right: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem !important;
+  text-align: center;
+  color: $color;
+  cursor: pointer;
+  border-radius: $radius;
+  transition: background 200ms ease;
+  &:hover {
+    background: rgba(0,0,0,0.1);
+  }
+}

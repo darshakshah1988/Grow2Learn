@@ -1,0 +1,25 @@
+<transition name="Modal">
+    <Modal @close="$emit('close')" @backdrop="cancelform" class="meeting-modal">
+      <Card slot="body" title="Select date and time">
+        <form @submit.prevent="submit" slot="body">
+            <date-picker 
+             v-model="date" 
+             valueType="format" 
+             :disabled-date="disabledBeforeDates"
+             inline></date-picker>
+            <div class="form__group">
+              <label class="label" for="sponsor-website">Meeting Commenced</label>
+              <select v-model="time" class="input">
+                <!-- inline object literal -->
+                <option value="">Select Time</option>
+                <option v-for="timeSlot in timeSlots" :value="timeSlot" >{{timeSlot}}</option>
+              </select>
+            </div>
+            <div class="form__footer text-right">
+              <button class="btn btn--sponsor " :disabled="submitting">Create Meeting</button>
+            </div>
+          </form>
+      </Card>
+    </Modal>
+  </transition>
+  

@@ -1,0 +1,17 @@
+<transition name="Modal">
+  <Modal wide @close="$emit('close')">
+    <Card slot="body" title="Are you sure you want to remove this member?">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <p>
+            All progress made by the member will be lost forever and they will no longer be able to login.
+          </p>
+        </div>
+        <div class="form__footer form__footer--end">
+          <span class="btn btn--standard" @click="$emit('close')">Cancel</span>
+          <button class="btn btn--danger" :disabled="submitting">Remove</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

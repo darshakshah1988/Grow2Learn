@@ -1,0 +1,16 @@
+<div class="AudioPlayer" :class="{'AudioPlayer--running' : running,'AudioPlayer--expanded': expanded }">
+  <i class="fal fa-cog AudioPlayer__btn AudioPlayer__action" v-show="!expanded" @click="expanded = true"></i>
+  <i class="fal fa-times AudioPlayer__btn AudioPlayer__action" v-show="expanded" @click="expanded = false"></i>
+  <audio 
+    @ended="handleEnd" 
+    @pause="playing = false" 
+    @play="playing = true" 
+    controls 
+    class="AudioPlayer__player" 
+    crossorigin="anonymous" 
+    ref="player" v-show="expanded"
+    :src="audioSrc">
+  </audio>
+  <i class="fal fa-play AudioPlayer__btn" v-show="!playing" @click="play"></i>
+  <i class="fal fa-pause AudioPlayer__btn" v-show="playing" @click="pause"></i>
+</div>

@@ -1,0 +1,499 @@
+@import "../../../sass/variables.scss";
+
+.LearningCard {
+  position: relative;
+}
+
+.LearningCard__title {
+  border: 0;
+  padding: 0;
+  height: 4rem;
+  font-size: 2rem;
+  background: none;
+}
+
+.LearningCard__delete-audio {
+  margin-right: 1rem;
+  margin-left: 2rem;
+}
+
+.LearningCard__uploads {
+  padding: 1rem;
+  margin: -1rem;
+  margin-bottom: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 0.5rem;
+  background: #666;
+}
+
+.LearningCard__upload-zone {
+  text-align: center;
+  padding: 3rem;
+  background: rgba(0, 0, 0, 0.25);
+  border-radius: $radius;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.editr--content {
+  background: #fff;
+}
+
+.Mobile {
+  display: flex;
+  position: relative;
+  width: 320px;
+  height: 640px;
+  background: #333;
+  border-radius: 4rem;
+  overflow: hidden;
+}
+
+.Mobile__content {
+  padding: 1rem;
+  flex: 1;
+  font-size: 0.825rem;
+  overflow: hidden;
+  .Mobile__content-title{
+    border-bottom: 2px solid #d9d9d9;
+    h3{
+      margin: 0px;
+    }
+    p{
+      margin-bottom: 15px;
+    }
+  }
+}
+
+.Mobile__content-task {
+  padding: 2rem 1rem;
+  background: #e5e5e5;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  margin-bottom: -1rem;
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.Mobile__content ol,
+.Mobile__content ul {
+  margin-bottom: 1rem;
+}
+
+.Mobile__audio {
+  color: #fff;
+}
+
+.Mobile__hero {
+  background: #333;
+  display: flex;
+  color: rgba(255, 255, 255, 0.5);
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  padding-top: 56.25%;
+  margin-top: 50px;
+}
+
+.Mobile__video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  video {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.Mobile__player {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.Mobile__delete-video {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  z-index: 20;
+  color: #fff;
+  cursor: pointer;
+  transition: all 200ms ease;
+  opacity: 0.75;
+  background: rgba(0, 0, 0, 0.45);
+  width: 44px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px !important;
+}
+
+.Mobile__delete-video:hover {
+  opacity: 1;
+  transform: scale(1.2);
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.dz-clickable {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  cursor: pointer;
+  .dz-error-mark,
+  .dz-success-mark {
+    display: none;
+  }
+  &:before {
+    font-size: 1rem;
+    color: #fff;
+    opacity: 0.5;
+    margin-bottom: 0.5rem;
+  }
+  &:after {
+    font-size: 0.875rem;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #fefefe;
+    color: $color;
+    border-radius: $radius;
+    transition: all 200ms ease;
+    box-shadow: $boxShadow;
+  }
+  &:hover:after {
+    box-shadow: $boxShadowHover;
+  }
+  &.dz-started:before,
+  &.dz-started:after {
+    display: none;
+  }
+}
+
+.dz-error .dz-error-mark {
+  display: block;
+}
+
+.Mobile__quiz {
+  background: #fff;
+}
+
+.Mobile__task {
+  padding: 1rem;
+  background: #fff;
+}
+
+.Mobile__header {
+  background: $blue;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
+  color: #fff;
+  padding: 0 1rem;
+  position: fixed;
+  width: 320px;
+  z-index: 50;
+  overflow: hidden;
+  h4 {
+    color: #fff;
+    font-weight: 300;
+  }
+  .Mobile__header-top{
+    text-align: center;
+    width: 100%;
+    p{
+      margin: 0;
+      font-size: 11px;
+    }
+  }
+}
+
+.Mobile__screen {
+  background: #eee;
+  overflow-y: scroll;
+  height: 100%;
+  padding-bottom: 52px;
+}
+
+.Mobile__screen::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+  background: transparent; /* optional: just make scrollbar invisible */
+}
+
+@keyframes showFooter {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.Mobile__modal {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.75);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.Mobile__modal--visible {
+  transform: translateY(-100%);
+}
+
+.Mobile__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  padding: 0.5rem 1rem;
+  background: #fff;
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.15);
+  animation: showFooter 200ms ease;
+  display: flex;
+  z-index: 50;
+  .btn {
+    flex: 1;
+    margin-left: 0.5rem;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+}
+
+.LearningCard__mobile {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  bottom: 0;
+  .marvel-device {
+    margin-top: 10px;
+  }
+}
+
+.LearningCard__video {
+  video {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.LearningCard__form {
+  padding-right: calc(320px + 4rem);
+}
+.MeetingCard__form {
+  padding-right: calc(320px + 4rem);
+}
+.Dropzone {
+  position: relative;
+  background: rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+}
+
+.Dropzone--audio {
+  &:after {
+    content: "Upload audio";
+  }
+}
+
+.Dropzone--video {
+  &:after {
+    content: "Upload video";
+  }
+}
+
+.embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+}
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+div a[href="https://www.froala.com/wysiwyg-editor?k=u"] {
+  display:none !important;
+}
+.MeetingCard__form {
+  .mx-datepicker{
+    width: 100%;
+    .mx-input{
+      height: 2.25rem;
+      font-size: 0.825rem;
+      padding: 0 1rem;
+      width: 100%;
+      outline: 0;
+      font-family: inherit;
+      border: 1px solid #b5b5b5;
+      transition: border 200ms
+    }
+  }
+  .row{
+    margin-left: -15px;
+    margin-right: -15px;
+    .col-2{
+      width: 50%;
+      float: left;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .col-3{
+      width: 60%;
+      float: left;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+    .col-1{
+      width: 40%;
+      float: left;
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+}
+.AgendaAction__add-action {
+  opacity: 0.75;
+  background: #eee;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.AgendaAction__delete-action {
+  position: absolute;
+  right: 0;
+  opacity: 0;
+  z-index: 25;
+  background: #fff;
+  height: 100%;
+  width: 36px;
+  text-align: center;
+  line-height: 36px;
+  border: 1px solid #bbb;
+  border-left: 0;
+  transition: all 200ms ease;
+  &:hover {
+    color: $red;
+    
+  }
+}
+
+.AgendaAction__action:hover .AgendaAction__delete-action {
+  opacity: 1;
+}
+.AgendaAction__action {
+  position: relative;
+  margin-bottom: 5px;
+}
+.AgendaAction__add-action:hover {
+  opacity: 1;
+}
+.Mobile__sponsor {
+  flex: 1;
+  display: flex;
+  background: #fff;
+  .Mobile__sponsor-logo {
+    width: 25%;
+    float: left;
+    padding: 10px;
+  }
+  .Mobile__sponsor-details {
+    float: left;
+    width: 75%;
+    padding: 10px 10px 10px 0;
+    p,h3{
+      margin-bottom: 0px;
+    }
+    a{
+      color: #4a749a;
+    }
+  }
+}
+.Mobile__Content-attendee{
+  margin: 15px 0;
+  h4{margin: 0;}
+  .attendee-indv {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .title{
+      font-size: 16px;
+    }
+    .role{
+      font-size: 16px;
+      font-style: italic;
+    }
+  }
+
+}
+.Mobile__Content-agenda{
+  h4{margin: 0;}
+  .sub-title{
+    font-size: 14px;
+    margin: 10px 0 5px;
+  }
+  .txt{
+    margin: 0;
+  }
+}
+.agenda__top{
+  position: relative;
+    float: left;
+    width: 100%;
+    .button.AgendaAction__add-action {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    padding: 5px 20px;
+    background: #fff;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+}
+}
+.AgendaAction__delete-agenda {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    z-index: 25;
+    background: #fff;
+    width: 36px;
+    text-align: center;
+    line-height: 36px;
+    transition: all 200ms ease;
+}
+.agenda__card{position: relative;}
+.agenda__card:hover .AgendaAction__delete-agenda {
+    opacity: 1;
+}
+.AgendaAction__delete-agenda:hover {
+    color: #ff3f31;
+}

@@ -1,0 +1,176 @@
+.pricing-wrapper__intro {
+    margin-bottom: 24px;
+  }
+  
+  .pricing-title {
+    margin-bottom: 82px;
+  }
+  
+  .pricing {
+    margin: 50px 0;
+  }
+  
+  .pricing__plans {
+    display: flex;
+  }
+  
+  .pricing-col:last-child {
+    margin: 0 0 0 1rem;
+  }
+  .pricing-col:first-child {
+    margin: 0 1rem 0 0;
+  }
+  
+  .pricing-col {
+    text-align: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin: 0 1rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.35);
+  }
+  
+  .pricing-col__header {
+    background: #3b4b73;
+    padding: 24px;
+    color: #fff;
+    flex: 0 0 auto;
+  }
+  
+  .pricing-col.active {
+    border: 1px solid #387ff5;
+  }
+  
+  .pricing-col.active::before {
+    position: absolute;
+    bottom: 100%;
+    font-weight: bold;
+    left: -2px;
+    right: -2px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 12px;
+    color: #fff;
+    background: #387ff5;
+    content: 'Current Plan';
+    display: block;
+    border-radius: 4px 4px 0 0;
+  }
+  
+  .pricing-col.active .pricing-col__header {
+    background: #fff;
+  }
+  
+  
+  .pricing-col__header h3 {
+    color: #fff;
+  }
+  
+  .pricing-col.active .pricing-col__header h3,
+  .pricing-col.active .pricing-col__header small {
+    color: #387ff5;
+  }
+  
+  .pricing-col__value {
+    background: #fff;
+    line-height: 10em;
+    color: #111;
+    border-bottom: 1px solid #eee;
+    flex: 0 0 auto;
+  }
+  
+  .pricing-col__strikethrough {
+    text-decoration: line-through;
+    font-size: 0.5em;
+    font-weight: 300;
+    opacity: 0.6;
+  }
+  
+  .pricing-col__features {
+    padding: 1rem;
+    background: #fff;
+    flex: 1;
+  }
+  
+  .pricing-col__footer {
+    padding: 1rem;
+    background: #f2f2f2;
+    flex: 0 0 auto;
+  }
+  
+  .pricing-col__list {
+    list-style: none;
+    margin: 0;
+  }
+  
+  .pricing-col__break {
+    padding-top: 0.5rem;
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    position: relative;
+    margin-top: 48px;
+  }
+  
+  .pricing-col__break:before {
+    position: absolute;
+    height: 24px;
+    line-height: 24px;
+    top: -24px;
+    display: block;
+    content: 'Free extras';
+    font-size: 12px;
+    text-transform: uppercase;
+    text-align: center;
+    color: #111;
+    width: 100%;
+  }
+  
+  .pricing-legend {
+    width: 180px;
+    padding-top: 80px;
+    color: #fff;
+  }
+  
+  .pricing-legend__item {
+    padding: 0 24px;
+    text-align: right;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  
+  .pp {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000;
+  }
+  
+  .pp__value {
+    font-size: 48px;
+  }
+  
+  .pp b {
+    font-weight: normal;
+    margin: 0 3px;
+  }
+  
+  .pp__meta {
+    font-size: 24px;
+  }
+  
+  .pp--strike {
+    opacity: 0.5;
+    margin-top: 6px;
+    transform: scale(0.75);
+  }
+  
+  .pp--strike .pp__value {
+    font-weight: normal;
+    text-decoration: line-through;
+  }
+  
+  .pp--strike b {
+    text-decoration: none;
+  }

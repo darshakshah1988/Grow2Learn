@@ -1,0 +1,41 @@
+@import "../../../sass/variables.scss";
+
+.Header {
+  display: flex;
+  height: 4rem;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  z-index: 50;
+}
+
+.Header__btn {
+  background: rgba(0,0,0,0.1);
+  box-shadow: none;
+  user-select: none;
+}
+
+.Header__action {
+  margin-right: 1rem;
+  background: #344d75;
+}
+
+.User {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.User__avatar {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+}
+

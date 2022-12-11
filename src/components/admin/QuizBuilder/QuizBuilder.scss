@@ -1,0 +1,139 @@
+@import "../../../sass/variables.scss";
+
+@media(min-width: 1600px) {
+  .QuizBuilder__questions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1rem;
+  }
+}
+
+.QuizBuilder__question {
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: visible;
+}
+
+.QuizBuilder__answer {
+  margin-bottom: 0.25rem;
+  position: relative;
+}
+
+.QuizBuilder__answer textarea {
+  min-height: 80px;
+  padding-right: 103px;
+}
+
+.QuizBuilder__remove-question {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.5;
+  transition: 200ms ease;
+  display: block;
+  width: 3rem;
+  text-align: center;
+  height: 3rem;
+  line-height: 3rem !important;
+  cursor: pointer;
+  &:hover { opacity: 1 }
+}
+
+.QuizBuilder__toggle {
+  position: absolute;
+  right: 2px;
+  top: 2px;
+  background: #fff;
+  padding: 10px 5px;
+  z-index: 50;
+}
+
+.QuizBuilder__add-answer {
+  opacity: 0.75;
+  background: #eee;
+  cursor: pointer;
+  transition: opacity 200ms ease;
+}
+
+.QuizBuilder__delete-answer {
+  position: absolute;
+  right: 0;
+  z-index: 25;
+  background: #fff;
+  height: 50%;
+  width: 36px;
+  text-align: center;
+  line-height: 36px;
+  border: 1px solid #bbb;
+  border-left: 0;
+  transition: all 200ms ease;
+  &:hover {
+    color: $red;
+  }
+}
+
+.QuizBuilder__answer:hover .QuizBuilder__delete-answer {
+  transform: translateX(calc(100% - 2px));
+}
+
+.QuizBuilder__add-answer:hover {
+  opacity: 1;
+}
+
+.QuizBuilder__question .QuizBuilder__question,
+.QuizBuilder__question + .QuizBuilder__add-question {
+  margin-top: 1rem;
+}
+
+.toggle-check-input {
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  opacity: 0;
+}
+
+.toggle-check-text {
+  font-size: 0.725rem;
+  display: inline-block;
+  position: relative;
+  text-transform: uppercase;
+  background: $red;
+  padding: 0.25em 0.5em 0.25em 2em;
+  border-radius: 1em;
+  min-width: 2em;
+  color: #FFF;
+  cursor: pointer;
+  transition: background-color 0.15s;
+}
+
+.toggle-check-text:after {
+  content: ' ';
+  display: block;
+  background: #fff;
+  width: 0.725rem;
+  height: 0.725rem;
+  border-radius: 50%;
+  position: absolute;
+  left: 0.3rem;
+  top: 0.3125rem;
+  transition: left 0.15s, margin-left 0.15s;
+}
+
+.toggle-check-text:before {
+  content: 'Incorrect';
+}
+
+.toggle-check-input:checked ~ .toggle-check-text {
+  background: #6fca49;
+  padding-left: 0.5rem;
+  padding-right: 2rem;
+}
+
+.toggle-check-input:checked ~ .toggle-check-text:before {
+  content: 'Correct';
+}
+
+.toggle-check-input:checked ~ .toggle-check-text:after {
+  left: 100%;
+  margin-left: -1.4rem;
+}

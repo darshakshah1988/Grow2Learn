@@ -1,0 +1,31 @@
+<transition name="Modal">
+    <Modal @close="$emit('close')" @backdrop="cancelform">
+      <Card slot="body" title="Invite mentor">
+        <form slot="body" @submit.prevent="submit">
+          <div class="form__group">
+            <label class="label" for="student-email">Email</label>
+            <input type="email" placeholder="john@smith.com" class="input" id="student-email" v-model="email" v-focus="modals.addMentor">
+          </div>
+          <div v-if="showAutosuggest && email">
+            <div v-for="student in autosuggestStudents" @click="selectAutosuggest(student.email)">
+              {{student.first_name}}
+              {{student.last_name}}
+              <span>{{student.email}}</span>
+            </div>
+          </div>
+          <div class="form__group" v-if="students.length > 1">
+            <label class="label">Students</label>
+            <!-- WARNING: always hide first business -->
+            <label class="checkbox" :for="'student-item-' + index" v-for="(student, index) in students" v-if="index > 0">
+              <input type="checkbox" :id="'student-item-' + index" :value="student.id" v-model="studentIds">
+              {{student.email}}
+            </label>
+          </div>
+          <div class="form__footer">
+            <button class="btn btn--block" :disabled="submitting">Send Invite</button>
+          </div>
+        </form>
+      </Card>
+    </Modal>
+  </transition>
+  

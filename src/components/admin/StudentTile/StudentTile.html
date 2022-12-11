@@ -1,0 +1,15 @@
+<router-link class="non-link Card Card--link" :to="{ name: 'studentProfile', params: { studentId: student.id } }">
+  <h4 class="Card__title flat">
+    <i class="icon student"></i>
+    {{ student.first_name ? (student.first_name + ' ' + student.last_name) : student.email }}
+  </h4>
+  <div class="Card__body Card__body--tight">
+    <p class="flat island" v-show="!progress.length" style="padding-top: 0.5rem">No courses assigned</p>
+    <div v-for="(course, cIndex) in progress" v-show="progress.length" class="StudentTile__course">
+      <p class="flat StudentTile__title">
+        <small><strong>{{ course.name }}</strong></small>
+      </p>
+      <ProgressBar class="flat" collection="units" :completed="course.numberOfCompletedUnits || 0" :total="course.numberOfUnits"></ProgressBar>
+    </div>
+  </div>
+</router-link>

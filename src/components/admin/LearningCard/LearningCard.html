@@ -1,0 +1,560 @@
+<div class="LearningCard">
+  <div v-if="!currentCard && ready">
+    Could not load this card.
+    <button class="btn btn--standard" @click="fetchUnit">Retry</button>
+  </div>
+
+  <div v-if="cardType != 'meeting'">
+    <div class="LearningCard__form" v-if="currentCard">
+      <form @submit.prevent>
+        <div class="Card">
+          <div class="Card__body">
+            <div class="form__group">
+              <label class="label" for="currentCard.name">Name</label>
+              <input
+                class="input"
+                type="text"
+                id="currentCard.name"
+                ref="name"
+                @change="save"
+                v-model="name"
+              />
+            </div>
+            <div class="form__group">
+              <label class="label" for="AudioDropzone"
+                >Audio <i>(Max size: 5mb)</i></label
+              >
+              <vue-dropzone
+                id="AudioDropzone"
+                ref="AudioDropzone"
+                class="Dropzone Dropzone--audio"
+                v-if="!currentCard.audioId"
+                :options="audioDropzoneOptions"
+                :includeStyling="false"
+                @vdropzone-sending="audioSendingEvent"
+                @vdropzone-success="audioSuccess"
+              >
+              </vue-dropzone>
+              <ProgressBar
+                v-show="audioIsUploading"
+                :total="100"
+                :completed="audioUploadPercent"
+              />
+              <div class="flex flex--aligned" v-if="currentCard.audioId">
+                <audio controls ref="audio" style="flex: 1"></audio>
+                <i
+                  class="fal fa-trash-alt btn btn--icon LearningCard__delete-audio"
+                  @click="removeAudio"
+                ></i>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="label" for="VideoDropzone"
+                >Video <i>(Max size: 15mb)</i></label
+              >
+              <template v-if="currentCard.mediaId == '10'">
+              <input type="checkbox" v-model="typeYoutube" @click="checkYoutubeOption" :checked='typeYoutube'/>
+              <input
+                type="text"
+                v-model="toggleYouTube"
+                @blur="updateYoutubeURL"
+                :placeholder="currentCard.videoId"
+              />
+              </template>
+              <template v-else>
+                <input type="checkbox" v-model="typeYoutube" @click="checkYoutubeOption" :checked='typeYoutube'/>
+                <input
+                  type="text"
+                  v-model="toggleYouTube"
+                  @blur="updateYoutubeURL"
+                />
+                </template>
+              <template>
+                <vue-dropzone
+                  id="YoutubeDropzone"
+                  ref="YoutubeDropzone"
+                  class="Dropzone Dropzone--video"
+                  v-if="toggleYouTube"
+                  :options="youtubeDropzoneOptions"
+                  :includeStyling="false"
+                  @vdropzone-sending="youtubeSendingEvent"
+                  @vdropzone-success="youtubeSuccess"
+                >
+                </vue-dropzone>
+                <vue-dropzone
+                  id="VideoDropzone"
+                  ref="VideoDropzone"
+                  class="Dropzone Dropzone--video"
+                  v-else
+                  :options="videoDropzoneOptions"
+                  :includeStyling="false"
+                  @vdropzone-sending="videoSendingEvent"
+                  @vdropzone-success="videoSuccess"
+                ></vue-dropzone>
+              </template>
+              <ProgressBar
+                v-if="videoIsUploading"
+                :total="100"
+                :completed="videoUploadPercent"
+              />
+              <ProgressBar
+                v-if="youtubeIsUploading"
+                :total="100"
+                :completed="youtubeUploadPercent"
+              />
+              <span v-show="youtubeIsUploading"
+                >Please wait. Your video is still processing. It will take some
+                time.</span
+              >
+
+              <iframe
+                ref="youtube"
+                frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen
+                v-if="typeYoutube"
+                :src="currentCard.videoId"
+              >
+              </iframe>
+            </div>
+            <video controls ref="video" v-else></video>
+            <div class="btn btn--standard" @click="removeVideo">
+              Remove video
+            </div>
+          </div>
+        </div>
+        <div class="form__group">
+          <label class="label" for="currentCard.content">Content</label>
+          <!-- <froala :tag="'textarea'" :config="contentConfig" v-model="content"></froala> -->
+
+          <quill-editor
+            v-model="content"
+            theme="snow"
+            @change="save"
+          ></quill-editor>
+        </div>
+        <div class="form__group">
+          <label class="label" for="currentCard.task">Practical Task</label>
+          <!-- <froala :tag="'textarea'" :config="evidenceConfig" v-model="evidence"></froala> -->
+          <quill-editor
+            v-model="evidence"
+            theme="snow"
+            @change="save"
+          ></quill-editor>
+        </div>
+        <!-- </div> -->
+        <!-- </div> -->
+        <h3>Quiz</h3>
+        <QuizBuilder></QuizBuilder>
+      </form>
+    </div>
+    <div class="LearningCard__mobile" v-if="currentCard">
+      <div class="marvel-device nexus5">
+        <div class="top-bar"></div>
+        <div class="sleep"></div>
+        <div class="volume"></div>
+        <div class="camera"></div>
+        <div class="screen">
+          <div class="Mobile__screen">
+            <div class="Mobile__header">
+              <h4 class="flat">{{ name }}</h4>
+              <div v-show="currentCard.audioId">
+                <AudioPlayer ref="player"></AudioPlayer>
+              </div>
+            </div>
+            <div class="Mobile__hero" id="MobileHero">
+              <div class="Mobile__video" v-if="currentCard.videoId">
+                <div
+                  class="embed-container"
+                  v-if="currentCard.mediaId == 10"
+                >
+                  <iframe
+                    ref="mobileYoutube"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                    v-if="typeYoutube"
+                    :src="currentCard.videoId"
+                  >
+                  </iframe>
+                </div>
+                <video controls ref="mobileVideo" v-else></video>
+              </div>
+            </div>
+            <div class="Mobile__sponsor" v-if="sponsors.length > 0">
+              <div class="Mobile__sponsor-logo">
+                <img :src="logo" />
+              </div>
+              <div class="Mobile__sponsor-details">
+                <h3>{{sponsorName}}</h3>
+                <p>{{sponsorMessage}}</p>
+                <a :href="sponsorWebsite" target="_blank">Learn More</a>
+              </div>
+            </div>
+            <div class="Mobile__content">
+              <div v-if="content">
+                <froalaView v-model="content"></froalaView>
+              </div>
+              <div class="Mobile__content-task" v-if="evidence">
+                <h2>Practical task</h2>
+                <p class="small">
+                  Your trainer has assigned a practical task for this card. This
+                  task will help you further understand the content shared in
+                  this card.
+                </p>
+                <div class="well">
+                  <froalaView v-model="evidence"></froalaView>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="Mobile__footer">
+            <div
+              class="btn btn--standard"
+              @click="quizVisible = true"
+              v-show="quiz.length"
+            >
+              Take quiz
+            </div>
+            <div class="btn btn--standard" v-show="!quiz.length">Next card</div>
+          </div>
+          <div
+            :class="{ 'Mobile__modal': true, 'Mobile__modal--visible' : quizVisible }"
+          >
+            <div class="Mobile__quiz">
+              <Quiz
+                @finish="quizVisible = false"
+                @close="quizVisible = false"
+                :preview="true"
+                :questions="quiz"
+              ></Quiz>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div v-if="cardType == 'meeting'">
+    <div class="MeetingCard__form" v-if="currentCard">
+      <form @submit.prevent>
+        <h3>Details</h3>
+        <div class="Card">
+          <div class="Card__body">
+            <div class="row">
+              <div class="form__group col-2">
+                <label class="label" for="currentCard.name">Date</label>
+                <!-- <input class="input" type="text" id="currentCard.name" ref="name" @change="save" v-model="name" /> -->
+                <date-picker
+                  v-model="name"
+                  id="currentCard.name"
+                  type="date"
+                  ref="name"
+                  valueType="format"
+                  :value="name"
+                  placeholder="Select date"
+                  @change="savemeeting"
+                ></date-picker>
+              </div>
+              <div class="form__group col-2">
+                <label class="label" for="sponsor-website">Time</label>
+                <select v-model="time" class="input" @change="savemeeting">
+                  <!-- inline object literal -->
+                  <option value="">Select Time</option>
+                  <option v-for="timeSlot in timeSlots" :value="timeSlot">
+                    {{timeSlot}}
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="form__group">
+              <label class="label" for="currentCard.location">Location</label>
+              <input
+                class="input"
+                type="text"
+                id="currentCard.location"
+                ref="location"
+                @change="savemeeting"
+                v-model="location"
+              />
+            </div>
+            <h3>Attendees</h3>
+            <div class="row">
+              <div class="form__group col-3">
+                <label class="label" for="AudioDropzone">Name</label>
+              </div>
+              <div class="form__group col-1">
+                <label class="label" for="AudioDropzone">Role</label>
+              </div>
+            </div>
+            <div class="row" v-for="(attendee, aIndex) in attendees">
+              <div class="form__group col-3">
+                <input
+                  class="input"
+                  type="text"
+                  id="currentCard.location"
+                  ref="location"
+                  @change="savemeeting"
+                  v-model.lazy="attendee.name"
+                />
+              </div>
+              <div class="form__group col-1">
+                <select
+                  v-model.lazy="attendee.role"
+                  class="input"
+                  @change="savemeeting"
+                >
+                  <!-- inline object literal -->
+                  <option value="">Select Time</option>
+                  <option v-for="role in roles" :value="role">{{role}}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="agenda__top">
+          <h3>Agenda</h3>
+          <div class="button AgendaAction__add-action" @click="addAgenda()">
+            Add
+          </div>
+        </div>
+        <div
+          class="Card agenda__card"
+          v-for="(agendaAction, i) in agendaActions"
+          :key="i"
+        >
+          <div
+            class="AgendaAction__delete-agenda"
+            v-if="i > 0"
+            @click.prevent="removeAgenda(i)"
+          >
+            <i class="fal fa-trash-alt"></i>
+          </div>
+          <div class="Card__title">
+            <div class="flex__full">
+              <h4 class="pressed">Topic</h4>
+              <input
+                type="text"
+                class="input"
+                id="topics"
+                @change="savemeeting"
+                v-model.lazy="agendaAction.topic"
+                placeholder="Topic"
+              />
+            </div>
+          </div>
+          <div class="Card__body">
+            <div class="AgendaAction__actions">
+              <label class="label">Actions</label>
+              <div
+                v-for="(action, aIndex) in agendaAction.actions"
+                class="AgendaAction__action"
+                :key="aIndex"
+              >
+                <div
+                  class="AgendaAction__delete-action"
+                  v-if="aIndex > 0"
+                  @click.prevent="removeAction(aIndex)"
+                >
+                  <i class="fal fa-trash-alt"></i>
+                </div>
+                <input
+                  type="text"
+                  class="input"
+                  v-model.lazy="action.text"
+                  :id="'action-' + aIndex"
+                  @change="savemeeting"
+                  placeholder="Action"
+                />
+              </div>
+              <div
+                class="input AgendaAction__add-action"
+                @click="addAction(i,aIndex)"
+              >
+                Add action
+              </div>
+            </div>
+          </div>
+        </div>
+        <h3>Recordings</h3>
+        <div class="Card">
+          <div class="Card__body">
+            <div class="row">
+              <div class="form__group col-2">
+                <label class="label" for="AudioDropzone"
+                  >Audio <i>(Max size: 5mb)</i></label
+                >
+                <vue-dropzone
+                  id="AudioDropzone"
+                  ref="AudioDropzone"
+                  class="Dropzone Dropzone--audio"
+                  v-if="!currentCard.audioId"
+                  :options="audioDropzoneOptions"
+                  :includeStyling="false"
+                  @vdropzone-sending="audioSendingEvent"
+                  @vdropzone-success="audioSuccess"
+                >
+                </vue-dropzone>
+                <ProgressBar
+                  v-show="audioIsUploading"
+                  :total="100"
+                  :completed="audioUploadPercent"
+                />
+                <div class="flex flex--aligned" v-if="currentCard.audioId">
+                  <audio controls ref="audio" style="flex: 1"></audio>
+                  <i
+                    class="fal fa-trash-alt btn btn--icon LearningCard__delete-audio"
+                    @click="removeAudio"
+                  ></i>
+                </div>
+              </div>
+              <div class="form__group col-2">
+                <label class="label" for="VideoDropzone"
+                  >Video <i>(Max size: 15mb)</i></label
+                >
+                <template v-if="!currentCard.videoId">
+                  <vue-dropzone
+                    id="YoutubeDropzone"
+                    ref="YoutubeDropzone"
+                    class="Dropzone Dropzone--video"
+                    v-if="toggleYouTube"
+                    :options="youtubeDropzoneOptions"
+                    :includeStyling="false"
+                    @vdropzone-sending="youtubeSendingEvent"
+                    @vdropzone-success="youtubeSuccess"
+                  >
+                  </vue-dropzone>
+                  <vue-dropzone
+                    id="VideoDropzone"
+                    ref="VideoDropzone"
+                    class="Dropzone Dropzone--video"
+                    v-else
+                    :options="videoDropzoneOptions"
+                    :includeStyling="false"
+                    @vdropzone-sending="videoSendingEvent"
+                    @vdropzone-success="videoSuccess"
+                  ></vue-dropzone>
+                </template>
+                <ProgressBar
+                  v-if="videoIsUploading"
+                  :total="100"
+                  :completed="videoUploadPercent"
+                />
+                <ProgressBar
+                  v-if="youtubeIsUploading"
+                  :total="100"
+                  :completed="youtubeUploadPercent"
+                />
+                <span v-show="youtubeIsUploading"
+                  >Please wait. Your video is still processing. It will take
+                  some time.</span
+                >
+                <div class="LearningCard__video" v-if="currentCard.videoId">
+                  <div
+                    class="embed-container"
+                    v-if="currentCard.videoId.type === 'youtube'"
+                  >
+                    <iframe
+                      ref="youtube"
+                      frameborder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen
+                    >
+                    </iframe>
+                  </div>
+                  <video controls ref="video" v-else></video>
+                  <div class="btn btn--standard" @click="removeVideo">
+                    Remove video
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="LearningCard__mobile" v-if="currentCard">
+      <div class="marvel-device nexus5">
+        <div class="top-bar"></div>
+        <div class="sleep"></div>
+        <div class="volume"></div>
+        <div class="camera"></div>
+        <div class="screen">
+          <div class="Mobile__screen">
+            <div class="Mobile__header">
+              <div class="Mobile__header-top">
+                <h4 class="flat">Meeting</h4>
+                <p>{{name}}</p>
+              </div>
+
+              <div v-show="currentCard.audioId">
+                <AudioPlayer ref="player"></AudioPlayer>
+              </div>
+            </div>
+            <div class="Mobile__hero">
+              <div class="Mobile__video" v-if="currentCard.videoId">
+                <div
+                  class="embed-container"
+                  v-if="currentCard.videoId.type === 'youtube'"
+                >
+                  <iframe
+                    ref="mobileYoutube"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                  >
+                  </iframe>
+                </div>
+                <video controls ref="mobileVideo" v-else></video>
+              </div>
+            </div>
+            <div class="Mobile__sponsor" v-if="sponsors.length > 0">
+              <div class="Mobile__sponsor-logo">
+                <img :src="logo" />
+              </div>
+              <div class="Mobile__sponsor-details">
+                <h3>{{sponsorName}}</h3>
+                <p>{{sponsorMessage}}</p>
+                <a :href="sponsorWebsite" target="_blank">Learn More</a>
+              </div>
+            </div>
+            <div class="Mobile__content">
+              <div class="Mobile__content-title">
+                <h3>{{name | formatDate}}</h3>
+                <p>{{time}}</p>
+              </div>
+              <div class="Mobile__Content-attendee" v-if="attendees.length > 0">
+                <h4>Attendees</h4>
+                <div
+                  class="attendee-indv"
+                  v-for="(attendee, aIndex) in attendees"
+                >
+                  <div class="title">{{attendee.name}}</div>
+                  <div class="role">{{attendee.role}}</div>
+                </div>
+              </div>
+              <div
+                class="Mobile__Content-agenda"
+                v-if="agendaActions.length > 0"
+              >
+                <h4>Agenda</h4>
+                <div v-for="(agendaAction, i) in agendaActions" :key="i">
+                  <h6 class="sub-title">Topic</h6>
+                  <p class="txt">{{agendaAction.topic}}</p>
+                  <h6 class="sub-title">Actions</h6>
+                  <p
+                    v-for="(action, aIndex) in agendaAction.actions"
+                    class="txt"
+                    :key="aIndex"
+                  >
+                    - {{action.text}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div v-if="ready" hidden>ready</div>
+</div>

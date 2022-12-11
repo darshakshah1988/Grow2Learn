@@ -1,0 +1,10 @@
+<div class="Card">
+  <h4 class="Card__title flat" :class="{ 'text-centered' : centeredTitle }" >
+    <i v-show="icon" :class="['icon', icon]">
+    </i>
+    {{ title }}
+  </h4>
+  <div :class="{ 'Card__body' : true, 'Card__body--tight' : tight }" v-if="$slots.body">
+    <slot name="body"></slot>
+  </div>
+</div>

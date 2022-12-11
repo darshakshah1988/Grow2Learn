@@ -1,0 +1,34 @@
+<div>
+    <div class="pricing-wrapper__intro text-centered">
+        <h2 class="text-centered pressed">Subscription Plans</h2>
+        </div>
+        <div class="pricing">
+        <div class="pricing__plans">
+            <div class="pricing-col" 
+                :class="{ active: subscription.product.id === subscription_plan.id }" 
+                v-for="(subscription_plan, key) in subscription_plans"  :key="subscription_plan.id" v-if="subscription_plan.active == true">
+            <div class="pricing-col__header">
+                <h3 class="pricing-col__title flat">{{ subscription_plan.name }}</h3>
+                <small>{{ subscription_plan.description }}</small>
+            </div>
+            <div class="pricing-col__value pricing-col__value--price">
+                <div class="pp">
+                <strong class="pp__value">${{ subscription_plan.price }}<b>/</b></strong>
+                <div class="pp__meta">month</div>
+                </div>
+            </div>
+            <div class="pricing-col__features">
+                <ul class="flat unstyled pricing-col__list">
+                    <li v-for="(feature, index) in subscription_plan.features" :key="index">{{ feature }}</li>
+                </ul>
+            </div>
+            <div class="pricing-col__footer" v-if="key < subscriptionPlanIndex">
+                <button class="btn" @click.prevent="redirectToCheckout(subscription_plan.price_id)">Upgrade</button>
+            </div>
+            <div class="pricing-col__footer" v-else-if="key > subscriptionPlanIndex">
+                <button class="btn btn--danger" @click.prevent="requestDowngradePlan(subscription_plan.name)">Downgrade</button>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>

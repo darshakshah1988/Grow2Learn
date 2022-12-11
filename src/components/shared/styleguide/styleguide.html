@@ -1,0 +1,72 @@
+<div class="styleguide">
+  <div class="container" style="padding-top: 50px">
+    <h1>Header</h1>
+    <h4>Unauthorised</h4>
+    <Header />
+    <h4>Authorised</h4>
+    <Header authed />
+    <h1>Largest heading</h1>
+    <h2>Large heading</h2>
+    <h3>Regular heading</h3>
+    <p>Ipsum nihil sunt nemo eaque veniam lorem. Ipsa ducimus iusto dolorum repellat minima. Architecto eum consectetur sint deleniti explicabo molestiae nemo nihil rerum repellat! Aperiam ex obcaecati architecto odio amet.</p>
+    <h1>Progress Bars</h1>
+    <ProgressBar completed="5" total="10" />
+    <h1>Buttons</h1>
+    <p>
+      <a class="btn" href="#">Button</a>
+    </p>
+    <p>
+      <a class="btn btn--block" href="#">Block Button</a>
+    </p>
+    <p>
+      <a class="btn btn--standard" href="#">Button Standard</a>
+    </p>
+    <p>
+      <a class="btn" disabled href="#">Button</a>
+    </p>
+    <h1>Form elements</h1>
+    <div>
+      <div class="form__group">
+        <label class="label" for="input">Label example</label>
+        <input type="text" id="input" class="input" placeholder="How about a placeholder?">
+      </div>
+      <div class="form__group">
+        <label class="label" for="textarea">Textarea label</label>
+        <textarea class="input"></textarea>
+      </div>
+    </div>
+    <h1>Cards</h1>
+    <Card title="Card" sub-title="The smaller copy below">
+    </Card>
+    <Card title="Card with body" sub-title="The smaller copy below">
+      <div slot="body">Some extra shit</div>
+    </Card>
+    <h1>Modal</h1>
+    <p>
+      <button class="btn" @click="showModal = true">Show modal</button>
+    </p>
+    <transition name="Modal">
+      <Modal v-if="showModal" @close="showModal = false">
+        <Card title="Card in a modal" slot="body">
+          <form action="" slot="body">
+            <div class="form__group">
+              <label class="label" for="student-name">Name</label>
+              <input type="text" class="input" id="student-name">
+            </div>
+            <div class="form__group">
+              <label class="label" for="student-email">Email</label>
+              <input type="email" class="input" id="student-email">
+            </div>
+            <div class="form__footer">
+              <button class="btn btn--block">Invite student</button>
+            </div>
+          </form>
+        </Card>
+      </Modal>
+    </transition>
+    <h1>CourseMenu</h1>
+    <CourseMenu :items="menuExample"></CourseMenu>
+    <h1>Quiz</h1>
+    <Quiz></Quiz>
+  </div>
+</div>

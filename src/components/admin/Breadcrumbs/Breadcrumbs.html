@@ -1,0 +1,16 @@
+<div class="Breadcrumbs">
+  <div class="Breadcrumbs__wrap">
+    <div :class="{ 'Breadcrumbs__item': true, 'Breadcrumbs__item--placeholder': crumb.loading, 'Breadcrumbs__item--editable': i === 0 && ($route.name === 'course')}"
+      v-for="(crumb, i) in crumbs"
+      :key="crumb.name"
+    >
+      <i class="icon course" v-if="i === 0 && ($route.name === 'course' || $route.name === 'card')"></i>
+      <i class="icon business" v-if="i === 0 && ($route.name === 'businessProfile')"></i>
+      <i class="icon student" v-if="i === 0 && ($route.name === 'studentProfile' || $route.name === 'dashboard')"></i>
+      <router-link v-if="crumb.link" :to="crumb.link" v-show="!editing">{{ crumb.label }}</router-link>
+      <input class="input UnitList__title" @blur="editing = false" ref="courseName" type="input" v-show="editing" @keypress="handleKeypress" :value="courseName" />
+      <span v-if="!crumb.link">{{ crumb.label }}</span>
+      <i class="fal fa-edit Breadcrumbs__edit" v-show="!editing" @click="edit" v-if="i === 0 && ($route.name === 'course')"></i>
+    </div>
+  </div>
+</div>

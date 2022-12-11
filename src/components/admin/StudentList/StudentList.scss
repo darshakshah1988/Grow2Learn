@@ -1,0 +1,113 @@
+@import "../../../sass/variables.scss";
+
+.StudentList__elapsed {
+  text-align: right;
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+  font-size: 0.825rem;
+}
+
+.StudentList__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 5rem;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 2rem;
+}
+
+.StudentList__group {
+  border-top: 1px solid #ddd;
+  padding-top: 2rem;
+  margin-bottom: 1rem;
+  &:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+}
+
+.StudentList__pending {
+  width: 17.5rem;
+  padding-left: 1rem;
+  height: calc(100vh - 6.25rem);
+  border-left: 1px solid #ddd;
+}
+
+.Pending {
+  margin: 0 -0.875rem;
+  margin-left: -1rem;
+  padding: 0.875rem;
+  cursor: pointer;
+  background: none;
+  transition: all 200ms ease;
+  opacity: 0.9;
+}
+
+.Pending__title {
+  transition: color 200ms ease;
+  font-size: 0.875rem;
+}
+
+.Pending:hover {
+  background: rgba(255,255,255,0.75);
+  opacity: 1;
+  .Pending__title {
+    color: $blue;
+  }
+}
+
+.Pending__avatar {
+  background: rgba(0,0,0,0.05);
+  border-radius: 50%;
+  overflow: hidden;
+  width: 2.75rem;
+  height: 2.75rem;
+  position: relative;
+  margin-right: 0.75rem;
+  i { margin: 0 }
+}
+
+.Pending__avatar i {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 375ms ease;
+}
+
+.Pending__avatar i:first-child {
+  background-size: 20px;
+}
+
+.Pending__avatar i:last-child {
+  top: 100%;
+}
+
+.Pending:hover .Pending__avatar i {
+  transform: translateY(-100%)
+}
+
+.Pending__content {
+  flex: 1;
+  line-height: 1.2;
+}
+
+@media(min-width: 480px) {
+
+  .StudentList__wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
+
+}
+
+@media(min-width: 1024px) {
+
+  .StudentList__wrap {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+}

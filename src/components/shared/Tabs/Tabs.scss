@@ -1,0 +1,31 @@
+@import "../../../sass/variables.scss";
+
+.tabs-component-tabs {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin-bottom: 1rem;
+}
+
+.tabs-component-tab {
+  flex: 1;
+}
+
+.tabs-component-tab-a {
+  color: inherit;
+  display: block;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid transparent;
+  text-align: center;
+  opacity: 0.8;
+  transition: all 375ms ease;
+  font-size: 0.875rem;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.is-active .tabs-component-tab-a {
+  opacity: 1;
+  border-bottom-color: $lightBlue;
+}

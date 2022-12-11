@@ -1,0 +1,17 @@
+<transition name="Modal">
+    <Modal @close="$emit('close')">
+      <Card slot="body" title="Your Courses">
+        <form @submit.prevent="submit" slot="body">
+          <div class="form__group">
+            <label class="checkbox" :for="'business-course-item-' + index" v-for="(course, index) in courses">
+              <input type="checkbox" :id="'business-course-item-' + index" :value="course.id" v-model="courseIds">
+              {{ course.name }}
+            </label>
+          </div>
+          <div class="form__footer">
+            <button class="btn btn--block" :disabled="submitting">Assign</button>
+          </div>
+        </form>
+      </Card>
+    </Modal>
+  </transition>

@@ -1,0 +1,22 @@
+.elevate {
+  .Admin__sidebar,
+  .Mobile__header {
+    background: #007d5b;
+  }
+
+  .btn--primary {
+    background: #007d5b;
+  }
+
+  .CourseMenu__link.router-link-active {
+    border-left-color: #F0F559;
+  }
+
+  .Menu {
+    background: #005d43;
+  }
+
+  .Menu__link:hover {
+    background: #1BA63F;
+  }
+}

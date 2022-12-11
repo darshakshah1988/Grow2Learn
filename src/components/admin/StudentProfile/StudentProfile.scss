@@ -1,0 +1,122 @@
+@import "../../../sass/variables.scss";
+
+.StudentProfile {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 2rem;
+}
+
+.StudentProfile__header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+}
+
+.StudentProfile__progress {
+  margin-top: -0.5rem;
+}
+
+.StudentProfile__group {
+  margin-bottom: 1.5rem;
+}
+
+.CourseCard {
+  position: relative;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  color: inherit;
+  margin-bottom: 0.75rem;
+}
+
+.CourseCard__wrap {
+  overflow: hidden;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  padding-bottom: 2rem;
+  position: relative;
+  color: inherit;
+}
+
+.CourseCard__action {
+  position: absolute;
+  width: 2.25rem;
+  height: 2.25rem;
+  line-height: 2.25rem !important;
+  text-align: Center;
+  top: 0.5rem;
+  left: 100%;
+  z-index: 50;
+  opacity: 0.9;
+  transition: all 200ms ease;
+  border-radius: $radius;
+  font-size: 0.825rem;
+}
+
+.CourseCard__action:hover {
+  background: #eee;
+  opacity: 1;
+}
+
+.CourseCard__progress {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-radius: 0;
+  margin-bottom: 0;
+}
+
+.CourseCard__actions {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.CourseCard__link {
+  color: inherit;
+}
+
+.CourseCard__wrap--flat {
+  padding-bottom: 1rem;
+}
+
+.CourseCard + .btn {
+  margin-top: 0.75rem;
+}
+
+.CourseCard__wrap--empty {
+  background: rgba(0,0,0,0.1);
+  opacity: 0.75;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  text-align: center;
+  transition: all 200ms ease;
+  color: #666;
+  font-size: 0.825rem;
+  font-weight: 600;
+}
+
+.CourseCard:hover .CourseCard__wrap--empty {
+  opacity: 1;
+  color: $lightBlue;
+}
+
+.CourseCard:hover .CourseCard__action {
+  transform: translateX(calc(-100% - 0.5rem));
+}
+
+.Activity__icon {
+  margin-right: 0.5rem;
+  position: relative;
+  top: 1px;
+}
+
+.Activity__time {
+  font-size: 0.75em;
+  opacity: 0.8;
+  padding-left: 26px;
+  display: block;
+}

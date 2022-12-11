@@ -1,0 +1,125 @@
+@import "../../../sass/variables.scss";
+
+.UnitList {
+  box-shadow: $boxShadowFloat;
+  background: #f9f9f9;
+  border-radius: $radius;
+}
+
+.UnitList__title {
+  overflow: hidden;
+  word-wrap: break-word;
+  flex: 1;
+  line-height: auto !important;
+  min-height: 0 !important;
+}
+
+textarea.UnitList__title {
+  height: 44px;
+  padding: 1em;
+}
+
+.UnitList__head,
+.UnitList__body,
+.UnitList__footer {
+  padding: 1rem;
+}
+
+.UnitList__head {
+  background: #fff;
+  box-shadow: $boxShadowLight;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.UnitList__options {
+  position: relative;
+}
+
+.UnitList__dots {
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem !important;
+  text-align: center;
+  border-radius: $radius;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.UnitList:hover .UnitList__options {
+  opacity: 1;
+}
+
+.UnitList__dots:hover {
+  background: #f2f2f2;
+}
+
+.UnitList__menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 120px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: $radius;
+  overflow: hidden;
+  box-shadow: $boxShadowFloat;
+}
+
+.UnitList__menu-option {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  text-align: left;
+  transition: all 200ms ease;
+  cursor: pointer;
+  user-select: none;
+  i { margin-right: 0.5rem }
+  &:hover {
+    color: $lightBlue;
+  }
+}
+
+.UnitList__card {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+.UnitList__card a {
+  display: block;
+}
+
+.UnitList__new-card {
+  position: relative;
+  overflow: hidden;
+  margin-top: -1.25rem;
+  border-radius: 0;
+}
+
+.UnitList--empty .UnitList__new-card {
+  margin-top: 0;
+}
+
+.UnitList__new-card button {
+  margin-top: 0.5rem;
+}
+
+.UnitList__body {
+  padding-bottom: 0.5rem;
+}
+
+.UnitList__Loader {
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.UnitList .sk-fading-circle {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+.Card.flat{
+  float: unset;
+}

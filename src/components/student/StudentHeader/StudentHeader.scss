@@ -1,0 +1,200 @@
+@import "../../../sass/variables.scss";
+
+.StudentHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+  padding: 0 1rem;
+  position: relative;
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.15);
+  z-index: 50;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: $blue;
+}
+
+.StudentHeader--clear {
+  box-shadow: none;
+}
+
+// So so bad :D
+.StudentHeader .AudioPlayer__player {
+  width: calc(100vw - 1rem);
+  right: -4rem;
+  top: calc(100% + 7px)
+}
+
+.StudentHeader__logo {
+  position: relative;
+  transition: all 200ms ease;
+  top: 3px;
+  z-index: 50;
+}
+
+.StudentHeader__logo:before {
+  opacity: 0;
+  display: block;
+  content: "\F053";
+  font-family: 'Font Awesome 5 Pro';
+  font-weight: 300;
+  color: #fff;
+  font-size: 11px;
+  position: absolute;
+  right: calc(100% + 0.4rem);
+  font-weight: bold;
+  transition: opacity 200ms ease;
+}
+
+.StudentHeader__logo--back {
+  transform: translateX(0.5rem);
+}
+
+.StudentHeader__logo--back:before {
+  opacity: 1;
+}
+
+.StudentHeader__title {
+  color: #fff;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.User {
+  display: flex;
+  align-items: center;
+  color: #fff;
+}
+
+.User__avatar {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+  font-size: 0.75rem;
+  background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.4));
+  border-radius: 50%;
+  color: #fff;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+// Header states
+
+.StudentHeader__wrap {
+  position: relative;
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  bottom: 0;
+  padding-left: calc(1rem + 48px);
+  z-index: 1;
+}
+
+.StudentHeader__title,
+.StudentHeader__course,
+.StudentHeader__unit-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  opacity: 0;
+  transition: all 200ms ease;
+  line-height: 1.2;
+}
+
+.StudentHeader__unit-card {
+  flex-direction: column;
+}
+
+.StudentHeader__unit-card {
+  transition: none;
+}
+
+.StudentHeader__title,
+.StudentHeader__course,
+.StudentHeader__unit,
+.StudentHeader__card {
+  color: #fff;
+}
+
+.StudentHeader__title,
+.StudentHeader__course {
+  font-size: 1rem;
+}
+
+.StudentHeader__course,
+.StudentHeader__unit-card {
+  top: 100%;
+}
+
+.StudentHeader__unit {
+  font-size: 1rem;
+  transform: translateY(50%);
+  opacity: 0;
+  transition: all 200ms ease;
+}
+
+.StudentHeader__card {
+  font-size: 0.75rem;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 200ms ease;
+  font-weight: 400;
+  color: #fff;
+}
+
+.StudentHeader__wrap--home {
+  .StudentHeader__title {
+    opacity: 1;
+  }
+}
+
+.StudentHeader__wrap--course {
+  .StudentHeader__title {
+    opacity: 0;
+    transform: translateY(-100%)
+  }
+  .StudentHeader__course {
+    opacity: 1;
+    transform: translateY(-100%)
+  }
+}
+
+.StudentHeader__wrap--card {
+  .StudentHeader__title {
+    opacity: 0;
+    transform: translateY(-100%)
+  }
+  .StudentHeader__course {
+    opacity: 0;
+    transform: translateY(-100%)
+  }
+  .StudentHeader__unit-card {
+    opacity: 1;
+    transform: translateY(-100%)
+  }
+  .StudentHeader__unit,
+  .StudentHeader__card {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@media(min-width: 1000px) {
+
+  .StudentHeader__wrap {
+    padding-left: calc((((100vw - 720px) / 2) - 0.5rem) - 48px);
+  }
+
+}

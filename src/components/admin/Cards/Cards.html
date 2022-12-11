@@ -1,0 +1,16 @@
+<div class="Cards">
+  <div class="Cards__wrap" v-if="cards">
+    <router-link v-for="card in cards" :key="'card-' + card.id" :to="{ name: 'card', params: { courseId: courseId, unitId: unitId, cardId: card.id }}">
+      <Card :key="card.id" :title="card.name"></Card>
+    </router-link>
+  </div>
+  <div class="Cards__error" v-if="!cards.length">
+    <div class="text-centered">
+      <h2>You haven't created any cards</h2>
+      <button class="btn" @click="toggleModal('card')">Create a card</button>
+    </div>
+  </div>
+  <button class="btn pull-right" @click="removeUnit">
+    <i class="fal fa-trash"></i> Delete Unit
+  </button>
+</div>

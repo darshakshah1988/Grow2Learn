@@ -1,0 +1,90 @@
+@import "../../../sass/variables.scss";
+
+.logo-wrap {
+  padding-bottom: 50%;
+  background: rgba(0,0,0,0.25);
+  margin-bottom: 1rem;
+  position: relative;
+  float:right;
+  width:250px;
+  height:180px;
+}
+
+
+.logo-wrap__container,
+.logo-wrap__logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  max-width:250px;
+  max-height:250px;
+  width: 100%;
+  height: 100%;
+}
+
+.logo-wrap__container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Theme {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  font-weight: 500;
+}
+
+.Theme__name {
+  display: flex;
+  justify-content: space-between;
+  flex: 1;
+}
+
+#pick-avatar {
+  width:45%;
+  float:right;
+}
+
+.Theme--selected .check {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: $green;
+  font-size: 10px;
+}
+
+.Theme__example {
+  width: 70px;
+  margin-right: 1rem;
+}
+
+.uploader {
+  position: absolute;
+}
+
+.themes  {
+  margin-bottom: 0.5rem;
+  width:50%;
+  float:left;
+}
+
+.Card {
+  margin-bottom: 0.5rem;
+  width:100%;
+  float:left;
+}
+
+.Modal__content {
+  position: relative;
+  flex: 1;
+  max-width: 50%;
+  transition: all 300ms ease;
+  width: 50%;
+  max-height: 100%;
+  padding: 0px;
+  scroll-behavior: auto;
+  scroll-margin-block: initial;
+}

@@ -1,0 +1,1518 @@
+{
+	"info": {
+		"_postman_id": "bbe884f5-ad9c-23de-7d60-259a17b56159",
+		"name": "Headway",
+		"description": "# Introduction\n\nThere are three main APIs within Headway\n\n`/admin` is custom APIs restricted to Admin users\n\n`/api` is REST APIs, restricted to Admin users. Primarily used for editing and deleting individual entities. This is provided via epilogue.\n\n`/student` is custom APIs restricted to Student users that delivers only the relevant Course, Business and Activity information for that student.\n\n# Authentication\n\nPOST to `/login/student` or `/login/admin`\n\n# Error Codes\n\n401 for unauthenticated or unauthorised, sometimes with an additional error message for debugging\n",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Admin",
+			"description": "",
+			"item": [
+				{
+					"name": "Admin Login Failure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "176928d3-1511-4a1b-966f-915a8af416f5",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "email",
+									"value": "bad email",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "p",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/login/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"login",
+								"admin"
+							]
+						},
+						"description": "Some request description"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b5227705-3388-4c66-88e7-6ea664c35efb",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"  pm.response.to.have.status(200);",
+									"  pm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Admin user returned\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql('Horticulate Training');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "root",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "p",
+									"description": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/login/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"login",
+								"admin"
+							]
+						},
+						"description": "Some request description"
+					},
+					"response": []
+				},
+				{
+					"name": "Admin Overview",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eb68754-0a6e-409d-9a94-1a423c7d0704",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/admin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4eb68754-0a6e-409d-9a94-1a423c7d0704",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/admin/course/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"course",
+								"1"
+							]
+						},
+						"description": "Some request description"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "64c354b3-64ff-4761-a62f-e2a19078d951",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Slug created correctly\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.slug).to.eql('My-New-Course');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"My New Course\",\"businessIds\":[1]}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"course"
+							]
+						},
+						"description": "Some request description"
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65efb5fc-ca11-4d64-8d9e-4afd827fc920",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Name updated\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql('Changed Course Name');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Changed Course Name\"}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/course/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Unit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b19a9b0-cf3c-4bcc-bd09-d1859c13bdd3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"pm.test(\"Cards data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    // pm.expect(jsonData.cards.length).to.eql(1);",
+									"    pm.expect(jsonData.cards[0].name).to.eql('Grass types');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/admin/unit/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"unit",
+								"1"
+							]
+						},
+						"description": "Some request description"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Unit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bbf51c9f-255f-4202-a303-b5d0d2600da4",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Slug created correctly\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.slug).to.eql('My-New-Unit');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"My New Unit\",\"courseId\":1}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/unit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"unit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Unit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "315abfe7-5c22-439a-9c2c-0b82d4b40d8c",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Name updated\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql('Changed Unit Name');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Changed Unit Name\"}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/unit/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"unit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e2ae38c3-a374-4404-931f-ea99a97635a7",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Slug created correctly\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.slug).to.eql('My-New-Card');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"My New Card\",\"unitId\":1}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/unit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"unit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "edba4e2a-9d5b-4042-a9ff-95a9a475f7a9",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Name updated\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql('Changed Card Name');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Changed Card Name\",\"cardId\":1}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/card/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"card",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "3440ce51-f31a-4593-a708-46959cd7a1da",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Only contains own Courses\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.courses.length).to.eql(2);",
+									"});",
+									"",
+									"pm.test(\"Only contains own Businesses\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.businesses.length).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/admin/student/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"student",
+								"1"
+							]
+						},
+						"description": "Some request description"
+					},
+					"response": []
+				},
+				{
+					"name": "Invite Student",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "dcf3b646-62f1-4a3b-8736-d274bfe805e7",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Invite Sent');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"s@s.com\",\"businessIds\":[1]}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "869b8b72-bb3f-4385-8032-fdade9af6c90",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Business name created correctly\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.name).to.eql('My New Business');",
+									"});",
+									"",
+									"pm.test(\"Admin ID set correctly\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.adminId).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"My New Business\"}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/business",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"business"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Student from Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b1d36e6e-6a54-49c9-a2e8-be4c85bb2b24",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.equal('OK');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"studentId\":1, \"courseId\": 1}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/student-course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"student-course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Student from Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b1d36e6e-6a54-49c9-a2e8-be4c85bb2b24",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.equal('OK');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"studentId\":1, \"businessId\": 1}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/student-business",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"student-business"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove Student from Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b1d36e6e-6a54-49c9-a2e8-be4c85bb2b24",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"",
+									"",
+									"pm.test(\"Body matches string\", function () {",
+									"    pm.expect(pm.response.text()).to.equal('OK');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/student/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"student",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth Checks",
+			"description": "",
+			"item": [
+				{
+					"name": "View Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "bb61daca-86f6-48b8-8057-73af0b5efe32",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/admin/course/1337",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"course",
+								"1337"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Course - Invalid Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b3b28759-84ff-42cc-a1c2-0a2faa164c5c",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401 Unauthorized', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Error message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Admin does not own Business #2');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"My New Course\",\"businessIds\":[2]}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/course",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"course"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "7387f133-5877-4ed4-bd69-25a1a99fadf3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Error Message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Admin does not own Course #2');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Changed Unit Name\"}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/course/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"course",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Course - Change Admin",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "4a39adff-cf40-4b95-84f8-3ef66c7b9ff6",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Error Message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Course can not change Admin');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"adminId\":2}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/course/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Unit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "100d39c8-e35f-419c-bf14-97f5654c6071",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/admin/unit/1337",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"unit",
+								"1337"
+							]
+						},
+						"description": "Some request description"
+					},
+					"response": []
+				},
+				{
+					"name": "Create Unit - Invalid Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0b237def-952f-487e-b2af-35315f0b1e2e",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"",
+									"pm.test(\"Error message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Admin does not own Course');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"My New Unit\",\"courseId\":2}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/unit",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"unit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Unit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "baed26b6-59b5-4027-bcb8-5a5199e6308c",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Error Message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Admin does not own Unit #2');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Changed Unit Name\"}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/unit/2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"unit",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Unit - Change Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "0e9ecdb8-db18-4a63-8480-87f8d5349da3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Error Message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Admin does not own Course #2');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"courseId\":2}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/unit/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"unit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Card - Not Found",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "2306cce8-029c-4def-9adf-3a62b67b50a2",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Error Message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Admin does not own Card #1337');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Changed Card Name\",\"cardId\":1}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/card/1337",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"card",
+								"1337"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Card - Change Unit",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "a07815de-6fab-4933-90be-e955f950a65d",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Responds', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"});",
+									"",
+									"pm.test('Ignores unitId', function () {",
+									"    var card = pm.response.json();",
+									"    pm.expect(card.unitId).to.eql(1);",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"unitId\":2}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/card/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"card",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Invite Student - Invalid Business",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "e8f1c7b6-8f8a-4f22-bf68-696f22b36e26",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response 401', function () {",
+									"\tpm.response.to.have.status(401);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"",
+									"pm.test(\"Message\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.message).to.eql('Unauthorized: Admin does not own Business #2');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json;charset=UTF-8"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"email\":\"s@s.com\",\"businessIds\":[2]}\n"
+						},
+						"url": {
+							"raw": "http://localhost:5000/admin/student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"admin",
+								"student"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Student",
+			"description": "",
+			"item": [
+				{
+					"name": "Student Overview",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d0689860-29f2-4b9a-a4a9-9417e1aee1f2",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Businesses\", function () {",
+									"    var student = pm.response.json();",
+									"    pm.expect(student.businesses.length).to.eql(2);",
+									"});1",
+									"",
+									"pm.test(\"Courses\", function () {",
+									"    var student = pm.response.json();",
+									"    pm.expect(student.courses.length).to.eql(3);",
+									"    pm.expect(student.courses[0].name).to.eql('Changed Course Name');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/student",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"student"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student Course",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "d456945f-418b-4499-8446-7ae3a523b61a",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									"",
+									"pm.test(\"Course, Units, Card\", function () {",
+									"    var course = pm.response.json();",
+									"    pm.expect(course.name).to.eql('Changed Course Name');",
+									"    pm.expect(course.units.length).to.eql(2);",
+									"    pm.expect(course.units[0].cards[0].name).to.eql('Changed Card Name');",
+									"});"
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/student/course/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"student",
+								"course",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student Activity",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "b7f1549a-34ab-4e51-accb-ef5ae858c1d3",
+								"type": "text/javascript",
+								"exec": [
+									"pm.test('Response OK', function () {",
+									"\tpm.response.to.have.status(200);",
+									"\tpm.expect(pm.response.responseTime).to.be.below(400);",
+									"})",
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/student/activity",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"student",
+								"activity"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,19 @@
+@import "../../../sass/variables.scss";
+
+.Student {
+  padding-top: 4rem;
+  height: 100%;
+}
+
+.Student__main {
+  height: 100%;
+}
+
+.Student__wrap {
+  height: 100%;
+}
+
+.StudentCard,
+.StudentCourse {
+  min-height: 100%;
+}

@@ -1,0 +1,64 @@
+<div class="Quiz">
+  <div v-if="!review">
+    <div class="Quiz__head">
+      <h4 class="flat">Question {{ currentQuestion }} of {{ questions.length}}</h4>
+      <div class="Quiz__close" @click="close">Close</div>
+    </div>
+    <div class="Quiz__question" v-show="currentQuestion == index + 1" v-for="(question, index) in questions">
+      <h3 class="Quiz__text">{{ question.question }}</h3>
+      <button
+        :class="{ 'Quiz__answer' : true, 'Quiz__answer--correct' : answer.correct, 'Quiz__answer--wrong' : !answer.correct,  'Quiz__answer--clicked' : clicked === i }"
+        v-for="(answer, i) in question.answers"
+        @click="submitAnswer(index, i)">
+        {{ answer.text }}
+      </button>
+    </div>
+  </div>
+  <div v-if="review" class="Review">
+    <i class="Review__close fal fa-times" @click="close"></i>
+    <div class="Review__top">
+      <h1 v-if="passed" class="Review__title flat">Good job!</h1>
+      <h1 v-if="!passed" class="Review__title flat">Good effort!</h1>
+      <div class="Review__badge">
+        <div class="Review__img Review__img--correct" :class="{ 'visible' : passed }">
+          <div class="Review__content">
+            <div class="Review__correct">{{ correct }}</div>
+            <div class="Review__total">out of {{ questions.length }}</div>
+          </div>
+        </div>
+        <div class="Review__img Review__img--incorrect" :class="{ 'visible' : !passed }">
+          <div class="Review__content">
+            <div class="Review__correct">{{ correct }}</div>
+            <div class="Review__total">out of {{ questions.length }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Review__bottom">
+      <p v-if="passed">You have completed the quiz for this card and can now move on to the next card.</p>
+      <p v-if="passed && !nextCardId">Great job! You've completed all the cards in this unit.</p>
+      <p v-if="!passed">Unlucky! You didn't pass this time round. Try again so that you can continue to the next card.</p>
+      <div class="Review__tip well" v-show="hasTask">
+        <p class="flat">
+          <small><strong>Don't forget!</strong> This card has a practical task suggested by your trainer.</small>
+        </p>
+      </div>
+      <div class="Review__footer">
+        <div class="btn" v-if="!passed" @click="reset">Try Again</div>
+        <button
+          class="btn"
+          v-if="passed && nextCardId"
+          @click="finishCard">
+          Next Card
+        </button>
+        <button
+          class="btn"
+          v-if="passed && !nextCardId"
+          @click="finishUnit">
+          Complete Unit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,55 @@
+@import "../../../sass/variables.scss";
+
+.BusinessProfile {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-column-gap: 2rem;
+}
+
+.BusinessProfile__header {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 1.5rem;
+}
+
+.BusinessProfile__title {
+  height: 3rem;
+}
+
+.BusinessProfile__form {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+.Dropzone--doc:after {
+  content: "Upload Doc";
+}
+.BusinessProfile__docs {
+  margin-top: 10px;
+  display: inline-flex;
+}
+.docs {
+  margin-right: 10px;
+  position: relative;
+}
+
+img.doc-img {
+  width: 80px;
+  height: 100px;
+  background: #dddddd;
+}
+.docs:hover .delete-file {
+  display: block;
+}
+.delete-file.delete {
+  display: none;
+  position: absolute;
+  background: red;
+  font-size: 13px;
+  line-height: 1;
+  padding: 4px 6px;
+  color: #fff;
+  border-radius: 15px;
+  cursor: pointer;
+  right: -7px;
+  top: -7px;
+}

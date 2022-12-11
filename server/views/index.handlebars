@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.8.1, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="landing/logo.png" type="image/x-icon">
+  <meta name="description" content="">
+  <title>Home</title>
+  <link rel="stylesheet" href="landing/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="landing/tether/tether.min.css">
+  <link rel="stylesheet" href="landing/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="landing/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="landing/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="landing/dropdown/css/style.css">
+  <link rel="stylesheet" href="landing/socicon/css/styles.css">
+  <link rel="stylesheet" href="landing/theme/css/style.css">
+  <link rel="stylesheet" href="landing/mobirise/css/mbr-additional.css" type="text/css">
+  
+  <style>
+      .contentLogo {
+          width:200px;
+          padding:0px;
+          margin-bottom:-75px;
+      }
+      #header15-0 {
+          background:url('https://ik.imagekit.io/iymwur0lvv/grow2learn/Grow2_learn_white3.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669767478386');
+          background-size: cover;
+      }
+        .section4.newsroom .thumbnail {
+            margin-bottom: 30px;
+            font-size: 1rem;
+        }
+        .section4 .thumbnail {
+            position: relative;
+            padding: 0;
+            border: none;
+            margin-bottom: 10px;
+            -webkit-border-radius: 0;
+            -moz-border-radius: 0;
+            border-radius: 0;
+        }
+        .section4.newsroom .featured .thumbnail {
+            margin-bottom: 15px;
+        }
+        .section4.newsroom .thumbnail:hover .news-title-featured {
+            display: none;  
+        }
+        .section4.newsroom img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .section4 .thumbnail .overlay {
+            position: absolute;
+            background-color: transparent;
+            width: 100%;
+            height: 100%;
+        }
+        .section4 .thumbnail:hover .overlay-inner {
+            background-color: transparent; 
+        }
+        .section4 .thumbnail .overlay-inner {
+            position: absolute;
+        background-color: rgba(0,0,0,0.7);
+        bottom: 0px;
+            padding: 0 20px;
+            width: 100%;
+        }
+        .section4.newsroom .thumbnail a {
+            text-decoration: none;
+        }
+        .section4 .thumbnail .overlay-inner h4 {
+            text-transform: inherit;
+            font-weight: 300;
+            color: #fff;
+            font-size: 150%;
+            margin-bottom: 1rem;
+        }
+        .section4 .thumbnail:hover .overlay {
+        background-color: rgba(0,0,0,0.7);
+        cursor: pointer;
+        }
+        .section4 .thumbnail .overlay-inner .title-hover {
+        display: none;
+        }
+        .section4 .thumbnail:hover .news-title {
+        display: none;
+        }
+        .section4 .thumbnail:hover .title-hover {
+        display: block;
+        }
+        @media only screen and (max-width: 991px) {
+            .section4.newsroom .thumbnail {
+                font-size: .7rem;
+            }
+        }
+
+        #overlay {
+            position: fixed;
+            height: 100%;
+            width: 100%;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(193, 240, 140, 0.856);
+            display: none;
+        }
+
+        #popup {
+            max-width: 600px;
+            width: 80%;
+            max-height: 300px;
+            height: 80%;
+            padding: 20px;
+            position: relative;
+            background: #fff;
+            margin: 20px auto;
+        }
+
+        #close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            color: #000;
+        }
+.success {
+    color: green;
+}
+.error{
+    color: red;
+}
+
+        
+
+  </style>
+  
+</head>
+<body>
+
+  {{!-- <div id="overlay">
+      <div id="popup">
+        <div id="close">X</div>
+        <h2>Subscribe For Plan</h2>
+        <form class="mbr-form" action="https://mobirise.com/" method="post" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="XDJL/mk+bWLkC+LQZaIgjOvwkSOUZ9Wmg5WL2NnWYocmcNdsgsuOUFhkqqvcPco4lmDBASC1Pn7D79eXoUNeSV9s2kwqO8M7W4TU0yuMe9sRY/k2qeYm4m6XV9Qy/DPn" data-form-field="Email">
+                <div data-for="name">
+                    <div class="form-group">
+                        <input type="text" class="form-control px-3" name="name" data-form-field="Name" placeholder="Name" required="" id="name-header15-0">
+                    </div>
+                </div>
+                <div data-for="email">
+                    <div class="form-group">
+                        <input type="email" class="form-control px-3" name="email" data-form-field="Email" placeholder="Email" required="" id="email-header15-0">
+                    </div>
+                </div>
+                <div data-for="phone">
+                    <div class="form-group">
+                        <input type="tel" class="form-control px-3" name="phone" data-form-field="Phone" placeholder="Phone" id="phone-header15-0">
+                    </div>
+                </div>
+                <div class="form-group" data-for="message">
+                    <textarea type="text" class="form-control px-3" name="message" rows="7" placeholder="Message" data-form-field="Message" id="message-header15-0"></textarea>
+                </div>
+                
+                <span class="input-group-btn">
+                    <button href="" type="submit" class="btn btn-secondary btn-form display-4">SUBMIT QUERY</button>
+                </span>
+            </form>
+      </div>
+    </div> --}}
+  
+  <section class="menu cid-slM0jB4EA9" once="menu" id="menu1-3">
+
+    
+
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm" style='padding:0px !important'>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo" >
+            <div class="navbar-brand">
+                <span class="navbar-logo" style='padding:0px'>
+                    <a href="#">
+                       <img src="https://ik.imagekit.io/iymwur0lvv/grow2learn/Grow2_learn_white3.png?ik-sdk-version=javascript-1.4.3&updatedAt=1669767478386" alt="Adminoh" style='width:100%;height:80px;margin:0px;padding:0px'>  
+                    </a>
+                </span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="l/creator">
+                        <span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>
+                        Login as Creator
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="l/member">
+                        <span class="mbri-user mbr-iconfont mbr-iconfont-btn"></span>
+                        Login as Member
+                    </a>
+                </li>
+            </ul>
+            <div class="navbar-buttons mbr-section-btn">
+            </div>
+        </div>
+    </nav>
+</section>
+
+{{!-- <section class="cid-slrKD1AHBT mbr-fullscreen" id="header15-0" >
+
+    
+
+    
+
+    <div class="container align-right">
+    <div class="row" >
+    <div class="mbr-white col-lg-8 col-md-7 content-container">
+        
+        <a href='#social-buttons3-21'><div style='width:50%;height:300px;margin-top:300px'></div></a>
+    </div>
+    
+    </div>
+    </div>
+    {{!-- <div class="mbr-arrow hidden-sm-down" aria-hidden="true">
+        <a href="#next">
+            <i class="mbri-down mbr-iconfont"></i>
+        </a>
+    </div> --}}
+</section> --}}
+
+{{!-- <section class="cid-smC2RPPRbO" id="video3-c">   
+    <figure class="mbr-figure align-center container">
+        <div class="video-block" style="width: 80%;">
+            <div><iframe class="mbr-embedded-video" src="https://www.youtube.com/embed/6OzxGRG6NDI?rel=0&amp;amp;showinfo=0&amp;autoplay=1&amp;loop=0" width="1280" height="720" frameborder="0" allowfullscreen></iframe></div>
+        </div>
+    </figure>
+</section> --}}
+
+<section class="cid-slrLMH0hJr" id="social-buttons3-21">
+    
+    
+<div class="container">
+        <div class="col-lg-12 col-md-6 align-center">
+            <center><h2>Register As Creator</h2></center>
+    <div class="form-container">
+        <div class="media-container-column" >
+            <div id="message" class="align-center success" style="display: none;">Registration successfully done! Please check verification email for further process!</div>
+            <form class="mbr-form" id="creatorForm" method="post" >
+            
+                <div data-for="name">
+                    <div class="form-group">
+                        <input type="text" class="form-control px-3" name="name"  placeholder="Bussiness Name" required="" id="name">
+                    </div>
+                </div>
+                <div data-for="first_name">
+                    <div class="form-group">
+                        <input type="text" class="form-control px-3" name="first_name"  placeholder="First Name" required="" id="fname">
+                    </div>
+                </div>
+                <div data-for="last_name">
+                    <div class="form-group">
+                        <input type="text" class="form-control px-3" name="last_name"  placeholder="Last Name" required="" id="lname">
+                    </div>
+                </div>
+                <div data-for="email">
+                    <div class="form-group">
+                        <input type="email" class="form-control px-3" name="email"  placeholder="Email" required="" id="email">
+                    </div>
+                </div>
+                
+                <span class="input-group-btn"><button  type="submit"  class="btn btn-secondary btn-form display-4">Register</button></span>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div>
+    
+
+    {{!-- <div class="container">
+        <div class="col-lg-12 col-md-6 align-center">
+            <center><h2>Inquiry Form</h2></center>
+    <div class="form-container">
+        <div class="media-container-column" data-form-type="formoid">
+            <div data-form-alert="" hidden="" class="align-center">Thanks for filling out the form!</div>
+            <form class="mbr-form" action="https://mobirise.com/" method="post" data-form-title="Mobirise Form"><input type="hidden" name="email" data-form-email="true" value="QGPb3vFhYkmpdjdoJj8+v8v2CekRB+TVMANon80s14O1Y995YuDG5il4E8wDUbgHBRJK2AhRcdPTQTy6P2RsFIv9IbtyRWnJzd3GxaIrQrOmLL0pYPChEds+sqx3r9rD" data-form-field="Email">
+                <div data-for="name">
+                    <div class="form-group">
+                        <input type="text" class="form-control px-3" name="name" data-form-field="Name" placeholder="Name" required="" id="name-header15-0">
+                    </div>
+                </div>
+                <div data-for="email">
+                    <div class="form-group">
+                        <input type="email" class="form-control px-3" name="email" data-form-field="Email" placeholder="Email" required="" id="email-header15-0">
+                    </div>
+                </div>
+                <div data-for="phone">
+                    <div class="form-group">
+                        <input type="tel" class="form-control px-3" name="phone" data-form-field="Phone" placeholder="Phone" id="phone-header15-0">
+                    </div>
+                </div>
+                <div class="form-group" data-for="message">
+                    <textarea type="text" class="form-control px-3" name="message" rows="7" placeholder="Message" data-form-field="Message" id="message-header15-0"></textarea>
+                </div>
+                <span class="input-group-btn"><button href="" type="submit" class="btn btn-secondary btn-form display-4">SEND FORM</button></span>
+            </form>
+        </div>
+    </div>
+    </div>
+    </div> --}}
+</section>
+
+
+
+
+{{!-- <section class="features13 cid-slSaX7Vjli" id="features13-b">
+    <div class="section4 newsroom">
+	<div class="container">
+		<h2 class="text-center display-3 my-5">Why Adminoh?</h2>
+		<div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">Site Inductions</h4></a>
+					  <a href="#"><h4 class="title-hover">Site Inductions</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/6.png" />
+				</div>
+			</div>
+			
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">First aid Plans</h4></a>
+					  <a href="#"><h4 class="title-hover">First aid Plans</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/2.png" />
+				</div>
+			</div>
+			
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">Evacuation Plans</h4></a>
+					  <a href="#"><h4 class="title-hover">Evacuation Plans</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/1.png" />
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">COVID-19 Plans</h4></a>
+					  <a href="#"><h4 class="title-hover">COVID-19 Plans</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/4.png" />
+				</div>
+			</div>			  
+		</div>
+        <div class="row">
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">Company procedure and policies</h4></a>
+					  <a href="#"><h4 class="title-hover">Company procedure and policies</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/3.png" />
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">Education platform (Company Development)</h4></a>
+					  <a href="#"><h4 class="title-hover">Education platform (Company Development)</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/5.png" />
+				</div>
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">Deliver storyline of the history of your busines</h4></a>
+					  <a href="#"><h4 class="title-hover">Deliver storyline of the history of your busines</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/7.png" />
+				</div>
+			</div>
+			
+			<div class="col-xs-6 col-sm-6 col-md-3">
+				<div class="thumbnail" onclick="location.href='#'">
+				  <div class="overlay">
+					<div class="overlay-inner">
+					  <a href="#"><h4 class="news-title">Team Building</h4></a>
+					  <a href="#"><h4 class="title-hover">Team Building</h4></a>  
+					</div>
+				  </div>
+					<img alt="" class="img-responsive cover" src="/landing/images/8.png" />
+				</div>
+			</div>			  
+		</div>
+</div>
+</div>
+</section> --}}
+{{!-- 
+<section class="cid-slM0EOTqC7" id="pricing-tables1-5">
+
+    
+
+    
+    <div class="container">
+        <div class="media-container-row">
+
+            <div class="plan col-12 mx-2 my-2 justify-content-center col-lg-3">
+                <div class="plan-header text-center pt-5">
+                    <h3 class="plan-title mbr-fonts-style display-5">
+                        Standard
+                    </h3>
+                    <div class="plan-price">
+                        <span class="price-value mbr-fonts-style display-5">
+                            $
+                        </span>
+                        <span class="price-figure mbr-fonts-style display-1">
+                              85</span>
+                        <small class="price-term mbr-fonts-style display-7">
+                             / month <br>+GST
+                        </small>
+                    </div>
+                </div>
+                <div class="plan-body pb-5">
+                    <div class="plan-list align-center">
+                        <ul class="list-group list-group-flush mbr-fonts-style display-7">
+                            <li class='list-group-item'>1 Content Creator</li>
+                            <li class='list-group-item'>3GB Media Space</li>
+                            <li class='list-group-item'>0-25 Users</li>
+                        </ul>
+                    </div>
+                    <div class="mbr-section-btn text-center pt-4">
+                        <a href="#" class="btn btn-primary display-4 planBtn" >Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="plan col-12 mx-2 my-2 justify-content-center col-lg-3">
+                <div class="plan-header text-center pt-5">
+                    <h3 class="plan-title mbr-fonts-style display-5">
+                        Pro
+                    </h3>
+                    <div class="plan-price">
+                        <span class="price-value mbr-fonts-style display-5">
+                            $
+                        </span>
+                        <span class="price-figure mbr-fonts-style display-1">
+                            135</span>
+                        <small class="price-term mbr-fonts-style display-7">
+                            / month +GST
+                        </small>
+                    </div>
+                </div>
+                <div class="plan-body pb-5">
+                    <div class="plan-list align-center">
+                        <ul class="list-group list-group-flush mbr-fonts-style display-7">
+                            <li class='list-group-item'>1 Content Creator</li>
+                            <li class='list-group-item'>3GB Media Space</li>
+                            <li class='list-group-item'>25-50 Users</li>
+                        </ul>
+                    </div>
+                    <div class="mbr-section-btn text-center pt-4">
+                        <a href="#" class="btn btn-primary display-4 planBtn">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="plan col-12 mx-2 my-2 justify-content-center col-lg-3">
+                <div class="plan-header text-center pt-5">
+                    <h3 class="plan-title mbr-fonts-style display-5">
+                        Elite
+                    </h3>
+                    <div class="plan-price">
+                        <span class="price-value mbr-fonts-style display-5">
+                            $
+                        </span>
+                        <span class="price-figure mbr-fonts-style display-1">
+                            195</span>
+                        <small class="price-term mbr-fonts-style display-7">
+                            /month +GST
+                        </small>
+                    </div>
+                </div>
+                <div class="plan-body pb-5">
+                    <div class="plan-list align-center">
+                        <ul class="list-group list-group-flush mbr-fonts-style display-7">
+                            <li class='list-group-item'>1 Content Creator</li>
+                            <li class='list-group-item'>3GB Media Space</li>
+                            <li class='list-group-item'>50-100 Users</li>
+                        </ul>
+                    </div>
+                    <div class="mbr-section-btn text-center pt-4">
+                        <a href="#" class="btn btn-primary display-4 planBtn">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="plan col-12 mx-2 my-2 justify-content-center col-lg-3">
+                <div class="plan-header text-center pt-5">
+                    <h3 class="plan-title mbr-fonts-style display-5">
+                        Custom
+                    </h3>
+                    <div class="plan-price">
+                        <span class="price-value mbr-fonts-style display-5">
+                            
+                        </span>
+                        <span class="price-figure mbr-fonts-style display-1">
+                            <a href="#" class="btn btn-primary display-4 planBtn">Contact Us</a></span>
+                        <small class="price-term mbr-fonts-style display-7">
+                                 
+                        </small>
+                    </div>
+                </div>
+                <div class="plan-body pb-5">
+                    <div class="plan-list align-center">
+                        <ul class="list-group list-group-flush mbr-fonts-style display-7">
+                            <li class='list-group-item'>1 Month Free Trial</li>
+                            <li class='list-group-item'>Custom Content Creator</li>
+                            <li class='list-group-item'>Custom Media Space</li>
+                            <li class='list-group-item'>Custom No of Users</li>
+                        </ul>
+                    </div>
+                    <div class="mbr-section-btn text-center pt-4">
+                        <!--<a href="#" class="btn btn-primary display-4">Contact Us</a>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> --}}
+
+<section class="cid-slrLMH0hJr" id="social-buttons3-2">
+    
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="col-md-8 align-center">
+                <h2 class="pb-3 mbr-section-title mbr-fonts-style display-2">
+                    SHARE THIS PAGE!
+                </h2>
+                <div>
+                    <div class="mbr-social-likes">
+                        <span class="btn btn-social socicon-bg-facebook facebook mx-2" title="Share link on Facebook">
+                            <i class="socicon socicon-facebook"></i>
+                        </span>
+                        {{!-- <span class="btn btn-social twitter socicon-bg-twitter mx-2" title="Share link on Twitter">
+                            <i class="socicon socicon-twitter"></i>
+                        </span>
+                        <span class="btn btn-social plusone socicon-bg-googleplus mx-2" title="Share link on Google+">
+                            <i class="socicon socicon-googleplus"></i>
+                        </span> --}}
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section once="" class="cid-slrLuZswiD" id="footer6-1">
+
+    
+
+    
+
+    <div class="container">
+        <div class="media-container-row align-center mbr-white">
+            <div class="col-12">
+                <p class="mbr-text mb-0 mbr-fonts-style display-7">
+                    © Copyright 2020-21 Grow2 Pty Ltd. - All Rights Reserved
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+  <script src="https://code.jquery.com/jquery-2.x-git.min.js"></script>
+  <script src="landing/popper/popper.min.js"></script>
+  <script src="landing/tether/tether.min.js"></script>
+  <script src="landing/bootstrap/js/bootstrap.min.js"></script>
+  <script src="landing/smoothscroll/smooth-scroll.js"></script>
+  <script src="landing/dropdown/js/script.min.js"></script>
+  <script src="landing/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="landing/sociallikes/social-likes.js"></script>
+  <script src="landing/theme/js/script.js"></script>
+  <script src="landing/formoid/formoid.min.js"></script>
+  
+  <script>
+    $(document).ready(function() {
+    $('.planBtn').click(function() {
+        $('#overlay').fadeIn(300);  
+    });
+    $('#close').click(function() {
+        $('#overlay').fadeOut(300);
+    });
+    });
+
+    
+  </script>
+  <script>
+       $(document).ready(function() {
+           $('#message').hide();
+      $('#creatorForm').submit(function(e) {
+e.preventDefault();
+          var name = $("#name").val();
+        var email = $("#email").val();
+        var lname = $("#lname").val();
+        var fname = $("#fname").val();
+
+        if( name == '' || email == '' || fname == '' || lname == '')
+        {
+            alert("Please provide basic details");
+        }
+        else
+        {
+
+         $.ajax({
+            type:"POST",
+            url:"/register",
+            data: {"name": name, "email": email, "first_name": fname, "last_name":lname},
+            mode: "no-cors",
+            crossDomain: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+            success:function(res) {
+                //alert(res);
+                if(res.success){
+                    $("#message").removeClass('error').addClass('success').html(res.message).fadeIn('fast');
+                }else{
+                    $("#message").removeClass('success').addClass('error').html(res.message).fadeIn('fast');
+                }
+                
+                $('#creatorForm').trigger("reset");
+                setTimeout(()=>{
+                    $("#message").fadeOut("slow");
+                },5000)
+            },
+            error:function(error) {
+                alert("error");
+            }
+            })
+
+        }
+      })
+       })
+     $('.submitMain').click(function() {
+        var name = $(".name").val();
+        var email = $(".email").val();
+        var phone = $(".phone").val();
+        var message = $(".message").val();
+        var plan = $(".plan").val();
+
+        if( name == '' || email == '' || phone == '')
+        {
+            alert("Please provide basic details");
+        }
+        else
+        {
+
+         $.ajax({
+            type:"POST",
+            url:"/mail",
+            data: {"name": name, "email": email, "phone": phone, "message": message, "plan": plan},
+            mode: "no-cors",
+            crossDomain: true,
+            headers: {
+                'Access-Control-Allow-Origin': '*'
+            },
+            success:function(res) {
+                alert(res);
+                $('.mbr-form').reset();
+            },
+            error:function(error) {
+                alert("error");
+            }
+            })
+
+        }
+        
+
+        
+    });
+ </script>
+  
+  
+</body>
+</html>

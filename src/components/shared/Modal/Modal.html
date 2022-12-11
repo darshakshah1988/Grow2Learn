@@ -1,0 +1,6 @@
+<div class="Modal" @click="emitClose" ref="modal" @keyup="handleKeyup">
+  <div :class="{ 'Modal__content' : true, 'Modal__content--wide' : this.wide }" @click="stopEmitClose">
+    <i class="fal fa-times Modal__close" @click="emitClose"></i>
+    <slot name="body"></slot>
+  </div>
+</div>

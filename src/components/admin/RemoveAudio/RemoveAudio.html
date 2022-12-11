@@ -1,0 +1,17 @@
+<transition name="Modal">
+  <Modal wide @close="$emit('close')">
+    <Card slot="body" title="Are you sure you want to remove this video?">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <p>
+            This audio will be deleted and no longer viewable on this card.
+          </p>
+        </div>
+        <div class="form__footer form__footer--end">
+          <span class="btn btn--standard" @click="$emit('close')">Cancel</span>
+          <button class="btn btn--danger" :disabled="submitting">Remove</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

@@ -1,0 +1,14 @@
+<div class="CourseMenu">
+  <ul class="CourseMenu__menu unstyled">
+    <li class="CourseMenu__item" v-for="item in items">
+      <router-link :class="linkClass(item.active)" :to="item.link">
+        <i :class="'icon ' + icon"></i>
+        <div>
+          <p class="flat">{{ item.text }}</p>
+          <small>{{ item.total }} {{ collection }}</small>
+        </div>
+      </router-link>
+      <div class="CourseMenu__bg"></div>
+    </li>
+  </ul>
+</div>

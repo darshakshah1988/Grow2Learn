@@ -1,0 +1,22 @@
+.dark {
+    .Admin__sidebar,
+    .Mobile__header {
+      background: #222;
+    }
+  
+    .btn--primary {
+      background: #1F57E7;
+    }
+  
+    .CourseMenu__link.router-link-active {
+      border-left-color: #E7971F;
+    }
+  
+    .Menu {
+      background: #111;
+    }
+  
+    .Menu__link:hover {
+      background: #E7971F;
+    }
+  }

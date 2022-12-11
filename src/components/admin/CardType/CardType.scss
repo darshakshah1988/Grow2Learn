@@ -1,0 +1,41 @@
+.card-type-modal{
+    .Modal__content{
+        max-width: 350px;
+        .Card.flat {
+            margin: 5px 0;
+            i{
+                margin-right: 0.5rem;
+            }
+        }
+    }
+}
+.learning-card{
+    background-image: url('/assets/img/icons/learning.png');
+    width: 25px;
+    height: 25px;
+}
+.meeting-card{
+    background-image: url('/assets/img/icons/meeting-minut.png');
+    width: 25px;
+    height: 25px;
+}
+.chemical-card{
+    background-image: url('/assets/img/icons/chemical.png');
+    width: 25px;
+    height: 25px;
+}
+.site-diary-card{
+    background-image: url('/assets/img/icons/site-diary.png');
+    width: 25px;
+    height: 25px;
+}
+.soil-card{
+    background-image: url('/assets/img/icons/soil.png');
+    width: 25px;
+    height: 25px;
+}
+.toolbox-card{
+    background-image: url('/assets/img/icons/toolbox.png');
+    width: 25px;
+    height: 25px;
+}

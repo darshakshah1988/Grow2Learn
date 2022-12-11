@@ -1,0 +1,41 @@
+<div class="Wallpaper">
+    <div class="container container--small">
+      <div class="Logo Logo--large Logo--centered">
+        <i class="Logo__icon"></i>
+        <span class="Logo__text">Grow2</span>
+      </div>
+      <div class="text-centered">
+        <h2 class="StudentOnboard__title flat">You're invited to Grow2</h2>
+        <div class="form__group StudentOnboard__account">
+          <p class="small pressed">Complete your registation by setting your name and password.</p>
+          <div class="input StudentOnboard__email">{{email}}</div>
+        </div>
+      </div>
+      <div class="Card">
+        <div class="Card__body">
+          <form slot="body" @submit.prevent="submit">
+            <div class="form__group">
+              <label class="label" for="student-first_name">First name</label>
+              <input type="text" class="input" id="student-first_name" refs="firstName" v-model="first_name" required>
+            </div>
+            <div class="form__group">
+              <label class="label" for="student-first_name">Last name</label>
+              <input type="text" class="input" id="student-last_name" refs="lastName" v-model="last_name" required>
+            </div>
+            <div class="form__group">
+              <label class="label" for="student-password">Password</label>
+              <input type="password" class="input" id="student-password" v-model="password" required>
+            </div>
+            <div class="form__group">
+              <label class="label" for="student-password-confirm">Confirm password</label>
+              <input type="password" class="input" id="student-password-confirm" v-model="passwordConfirm" required>
+            </div>
+            <div class="form__footer">
+              <button class="btn btn--block" :disabled="submitting">Join Grow2</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  

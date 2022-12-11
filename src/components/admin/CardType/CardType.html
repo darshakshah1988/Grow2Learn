@@ -1,0 +1,50 @@
+<transition name="Modal">
+  <Modal @close="$emit('close')" @backdrop="cancelform" class="card-type-modal">
+    <Card slot="body" title="Choose a template">
+      <div slot="body">
+      <div class="Card flat" >
+        <a href="javascript:void(0);" @click="learningCard">
+          <h4 class="Card__title flat">
+          <i class="icon learning-card"></i>Learning Card
+        </h4>
+      </a>
+      </div>
+      <!-- <div class="Card flat">
+        <a href="javascript:void(0);" @click="upcoming">
+        <h4 class="Card__title flat">
+          <i class="icon soil-card"></i>Soil Amendment Record
+        </h4>
+        </a>
+      </div> -->
+      <div class="Card flat">
+        <a href="javascript:void(0);" @click="upcoming">
+        <h4 class="Card__title flat">
+          <i class="icon toolbox-card"></i>Tool Box Meeting Record
+        </h4>
+        </a>
+      </div>
+      <div class="Card flat">
+        <a href="javascript:void(0);" @click="upcoming">
+        <h4 class="Card__title flat">
+          <i class="icon site-diary-card"></i>Site Diary
+        </h4>
+        </a>
+      </div>
+      <div class="Card flat">
+        <a href="javascript:void(0);" @click="meetingCard">
+        <h4 class="Card__title flat">
+          <i class="icon meeting-card"></i>Meetings minutes
+        </h4>
+        </a>
+      </div>
+      <!-- <div class="Card flat">
+        <a href="javascript:void(0);" @click="upcoming">
+        <h4 class="Card__title flat">
+          <i class="icon chemical-card"></i>Chemical Spray Book
+        </h4>
+        </a>
+      </div> -->
+    </div>
+    </Card>
+  </Modal>
+</transition>

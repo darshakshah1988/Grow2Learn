@@ -1,0 +1,62 @@
+@import "../../../sass/variables.scss";
+
+.Card {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border-radius: 0.25rem;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  text-decoration: none;
+  transition: all 375ms ease;
+  color: $color;
+  overflow: hidden;
+}
+
+.Card--action {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+  opacity: 0.5;
+  max-height: 8rem;
+}
+
+.Card--action:hover {
+  opacity: 0.8;
+}
+
+.Card--link {
+  cursor: pointer;
+}
+
+.Card__title {
+  color: $blue;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  padding: 1rem;
+  &.text-centered {
+    display: block;
+  }
+}
+
+.Card__body {
+  padding-top: 0.5rem;
+  padding: 1rem;
+  background: #f9f9f9;
+  border-top: 1px solid #eee;
+  flex: 1;
+}
+
+.Card__body--tight {
+  padding: 0;
+  border: 0;
+}
+
+.Card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+

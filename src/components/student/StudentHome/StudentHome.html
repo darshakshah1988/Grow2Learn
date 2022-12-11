@@ -1,0 +1,24 @@
+
+
+<div class="StudentHome">
+  <div class="container">
+    <div v-show="student.courses && !student.courses.length" class="text-centered StudentHome__empty" style="margin: 100px 20px">
+      <h3 class="flat">You have no content</h3>
+      <p>Your content will appear here once your club assigns them.</p>
+    </div>
+
+    <div v-for="(admin, id) in admins"
+      v-if="student.courses && student.courses.length > 0">
+      <div v-if="courses(admin.id).length">
+        <h4 class="StudentHome__title">{{admin.name}}</h4>
+        <router-link v-for="course in courses(admin.id)" :key="course.id" :to="{ name: 'studentCourse', params: { courseId: course.id }}">
+          <Card :icon="'course'" tight :title="course.name">
+            <div slot="body">
+              <ProgressBar class="flat" :completed="course.CourseStudent.completedUnits || 0" :total="course.units.length" collection="Units"></ProgressBar>
+            </div>
+          </Card>
+        </router-link>
+      </div>
+    </div>
+  </div>
+</div>

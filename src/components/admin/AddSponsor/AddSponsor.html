@@ -1,0 +1,37 @@
+<transition name="Modal">
+  <Modal @close="$emit('close')" class="sponsor-modal">
+    <Card slot="body" title="Add Sponsor">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <label class="label" for="sponsor-name">Sponsor Name</label>
+          <input type="text" class="input" id="sponsor-name" v-model="sponsorName"  autocomplete="off" required>
+        </div>
+        <div class="form__group">
+          <label class="label" for="sponsor-logo">Sponsor Logo</label>
+          <vue-dropzone
+            ref="imgDropZone"
+            id="customdropzone"
+            class="Dropzone Dropzone--image"
+            :options="dropzoneOptions"
+            @vdropzone-sending="imageSendingEvent"
+            @vdropzone-success="afterComplete"
+          ></vue-dropzone>
+            <div v-if="logo" class="image-div">
+                <img :src="logo.src" class="image" />
+            </div>
+        </div>
+        <div class="form__group">
+          <label class="label" for="sponsor-message">Sponsor message</label>
+          <textarea rows="4" id="sponsor-message" v-model="sponsorMessage"  required></textarea>
+        </div>
+        <div class="form__group">
+          <label class="label" for="sponsor-website">Sponsor Website</label>
+          <input type="url" class="input" id="sponsor-website" v-model="sponsorWebsite"  autocomplete="off" required>
+        </div>
+        <div class="form__footer text-right">
+          <button id="btnSponsor" class="btn btn--sponsor " :disabled="submitting">Create Sponsor</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

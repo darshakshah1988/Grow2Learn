@@ -1,0 +1,15 @@
+<transition name="Modal">
+  <Modal wide @close="$emit('close')">
+    <Card slot="body" title="Are you sure you want to remove student from business?">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <p>The student will no longer show under this business. The student will still maintain all course progress.</p>
+        </div>
+        <div class="form__footer form__footer--end">
+          <span class="btn btn--standard" @click="$emit('close')">Cancel</span>
+          <button class="btn btn--danger" :disabled="submitting">Remove</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

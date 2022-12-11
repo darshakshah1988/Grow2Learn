@@ -1,0 +1,10 @@
+Hi,
+
+You have been invited to Adminoh.
+
+If the above link does not work, paste the following URL in your browser:
+
+https://adminohapp.com/invite?token={{token}}
+
+Regards,
+Adminoh

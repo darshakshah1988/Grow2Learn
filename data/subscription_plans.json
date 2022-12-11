@@ -1,0 +1,74 @@
+[
+    {
+        "name": "Free Plan",
+        "price": 0,
+        "description": "Free Plan",
+        "features": {
+            "1": "Promote your videos with restrictions on the company video platform",
+            "2": "Can upload their videos to company's youtube channel with watermarks of grow2",
+            "3": "No Limit",
+            "5": "High Scalability",
+            "6": "Good Performance",
+            "7": "Easy Management",
+            "8": "Medium Bandwidth",
+            "9": "Technical Support/Help Desk not included",
+            "10": "With Restrictions on account. Limited Access of features",
+            "storageLimit": "100 MB",
+            "storageInBytes": 104857600
+        }
+    },
+    {
+        "name": "Basic Plan",
+        "price": 50,
+        "description": "Basic Plan",
+        "features": {
+            "1": "Unlimited YouTube Videos Access",
+            "2": "Can upload their videos to company's youtube channel with watermarks of grow2",
+            "3": "No Limit",
+            "4": "Data Storage up to 150GB",
+            "5": "High Scalability",
+            "6": "Good Performance",
+            "7": "Easy Management",
+            "8": "High Bandwidth",
+            "9": "Technical Support/Help Desk included",
+            "storageLimit": "150 GB",
+            "storageInBytes": 161061273600
+        }
+    },
+    {
+        "name": "Standard Plan",
+        "price": 100,
+        "description": "Standard Plan",
+        "features": {
+            "0": "Unlimited YouTube Videos Access",
+            "1": "Can upload their videos to company's youtube channel with watermarks of grow2",
+            "2": "No Limit",
+            "3": "Data Storage up to 450GB",
+            "4": "High Scalability",
+            "5": "Good Performance",
+            "6": "Easy Management",
+            "7": "High Bandwidth",
+            "8": "Technical Support/Help Desk included",
+            "storageLimit": "450 GB",
+            "storageInBytes": 483183820800
+        }
+    },
+    {
+        "name": "Complete Plan",
+        "price": 150,
+        "description": "Complete Plan",
+        "features": {
+            "1": "Unlimited YouTube Videos Access",
+            "2": "Can upload their videos to company's youtube channel with watermarks of grow2",
+            "3": "No Limit",
+            "4": "Data Storage up to 750GB",
+            "5": "High Scalability",
+            "6": "Good Performance",
+            "7": "Easy Management",
+            "8": "High Bandwidth",
+            "9": "Technical Support/Help Desk included",
+            "storageLimit": "750 GB",
+            "storageInBytes": 805306368000
+        }
+    }
+]

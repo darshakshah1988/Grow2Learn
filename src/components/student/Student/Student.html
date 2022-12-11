@@ -1,0 +1,11 @@
+<div class="Student">
+  <notifications group="student_notifs" position="bottom right" />
+  <StudentHeader></StudentHeader>
+  <div class="Student__main">
+      <StudentHome v-if="$route.name === 'studentHome'"></StudentHome>
+      <div class="Student__wrap" v-if="$route.name != 'studentHome'">
+        <StudentCourse v-if="$route.name === 'studentCourse' || $route.name === 'studentUnit'"></StudentCourse>
+        <StudentCard v-if="$route.name === 'studentCard'"></StudentCard>
+      </div>
+  </div>
+</div>

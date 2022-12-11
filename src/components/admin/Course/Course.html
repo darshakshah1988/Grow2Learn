@@ -1,0 +1,30 @@
+<div class="Course" v-if="currentCourse">
+  <SlickList class="Units" v-if="currentCourse.units"
+    axis="x"
+    lockAxis="x"
+    v-model="currentCourse.units"
+    helperClass="grabbing"
+    @input="sortUnits"
+  >
+      <SlickItem v-for="(unit, index) in currentCourse.units"
+        class="Units__list"
+        :index="index"
+        :key="'slick-item-unit-' + unit.id"
+      >
+        <UnitList
+          :name="unit.name"
+          :unit-id="unit.id"
+          :course-id="route.params.courseId"
+          :key="'unit-' + unit.id"></UnitList>
+      </SlickItem>
+      <div class="Units__list" @click="toggleModal('addUnit')">
+        <div class="UnitList addbutton">
+        <div class="UnitList__body">
+          <div class="UnitList__card">
+            <i class="fal fa-plus" style="margin-right: 1rem; margin-top: -2px"></i> Add a unit
+          </div>
+        </div>
+        </div>
+      </div>
+  </SlickList>
+</div>

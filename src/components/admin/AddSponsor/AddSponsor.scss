@@ -1,0 +1,26 @@
+.sponsor-modal{
+    overflow-y: auto;
+    .Modal__content{
+        max-width: 450px;
+        textarea{
+            width: 100%;
+        }
+    }
+    .btn--sponsor{
+        width: auto;
+
+    }
+    .dropzone.dz-clickable .dz-message{
+        display: none;
+    }
+    .text-right{
+        text-align: right;
+    }
+    .Dropzone--image{
+        max-height: 100px;
+        min-height: 100px;
+        &:after {
+            content: "Upload image";
+        }
+    }
+}

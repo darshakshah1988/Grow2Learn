@@ -1,0 +1,88 @@
+@import "../../../sass/variables.scss";
+
+.Breadcrumbs__wrap {
+  display: flex;
+  align-items: center;
+}
+
+.Breadcrumbs__edit {
+  margin-left: 1rem;
+  transition: all 200ms ease;
+  font-size: 13px;
+}
+
+.Breadcrumbs__item:hover .Breadcrumbs__edit {
+  opacity: 1;
+}
+
+.Breadcrumbs__item {
+  margin-left: 1rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  &:before {
+    display: block;
+    content: "\f105";
+    font-family: 'Font Awesome 5 Pro';
+    font-weight: 300;
+    margin-right: 1rem;
+    opacity: 0.25;
+    width: 0.5rem;
+    text-align: center;
+  }
+  &:first-child {
+    margin-left: 0;
+    padding-left: 0;
+    &:before {
+      display: none;
+    }
+  }
+  a {
+    color: $blue
+  }
+  &:last-child a {
+    cursor: default;
+    color: inherit;
+  }
+}
+
+.Breadcrumbs__item--link {
+  color: $blue;
+}
+
+.Breadcrumbs__item--editable {
+  margin: 0 -1rem !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: $radius;
+  cursor: pointer;
+}
+
+.Breadcrumbs__item--editable a { cursor: pointer !important }
+
+.Breadcrumbs__item--editable i:hover {
+  background: #f2f2f2;
+}
+
+
+@keyframes placeHolderShimmer{
+  0%{
+    background-position: -468px 0
+  }
+  100%{
+    background-position: 468px 0
+  }
+}
+
+.Breadcrumbs__item--placeholder span {
+  width: 8rem;
+  height: 1rem;
+  animation-duration: 1.25s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: darkgray;
+  background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+  background-size: 800px 104px;
+}

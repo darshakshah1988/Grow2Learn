@@ -1,0 +1,15 @@
+<transition name="Modal">
+  <Modal wide @close="$emit('close')">
+    <Card slot="body" title="Are you sure you want to remove this default course?">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <p>New students of {{ activeBusinessProfile.name }} will no longer be automatically assigned this course when they are invited.</p>
+        </div>
+        <div class="form__footer form__footer--end">
+          <span class="btn btn--standard" @click="$emit('close')">Cancel</span>
+          <button class="btn btn--danger" :disabled="submitting">Remove</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

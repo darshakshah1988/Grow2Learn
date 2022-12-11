@@ -1,0 +1,56 @@
+@import "../../../sass/variables.scss";
+
+.Modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  padding: 1.5rem;
+  z-index: 9999;
+}
+
+.Modal__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 56px;
+  line-height: 56px !important;
+  text-align: center;
+  cursor: pointer;
+  transition: all 200ms ease;
+  &:hover {
+    color: $lightBlue;
+  }
+}
+
+.Modal__content {
+  position: relative;
+  flex: 1;
+  max-width: 18.75rem; // 300
+  transition: all 300ms ease;
+}
+
+.Modal__content--wide {
+  max-width: 31.25rem; // 500
+}
+
+// Transitions 
+
+.Modal-enter {
+  opacity: 0;
+}
+
+.Modal-leave-active {
+  opacity: 0;
+}
+
+.Modal-enter .Modal__content,
+.Modal-leave-active .Modal__content {
+  transform: scale(1.1);
+}

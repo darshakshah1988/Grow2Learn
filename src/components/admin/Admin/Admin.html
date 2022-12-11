@@ -1,0 +1,189 @@
+<div id="dashboard" class="Admin" :class="admin.theme" ref="wrapper">
+  <notifications group="admin_notifs" position="bottom right" />
+  <div v-if="ready">
+    <div class="Admin__expired Wallpaper" v-if="isNotActive">
+      <div class="container text-centered">
+        <h1>Hmm&hellip; seems your account has expired</h1>
+        <p>Your account has expired and you did not enter any payment information. If you wish to continue using Grow2
+          you must resolve your payment.</p>
+        <p><button class="btn">Pay now</button></p>
+      </div>
+    </div>
+    <!-- <div class="Admin__loading Wallpaper" ref="loadingscreen">
+      <img src="/assets/img/logo-circle.svg" alt="" class="loading-logo">
+    </div> -->
+    <div class="Admin__content" ref="content">
+      <div :class="{ 'Admin__sidebar' : true, 'Admin__sidebar--open' : this.sidebarOpen }">
+        <div class="Admin__sidebar-head">
+          <i class="fal fa-bars Admin__navicon" v-show="!sidebarOpen" @click="toggleSidebar"></i>
+          <i class="fal fa-times Admin__navicon Admin__navicon--close" v-show="sidebarOpen"></i>
+          <div class="Logo" @click.stop="toggleMenu">
+            <router-link to="/dashboard" class="Logo__icon"
+              :style="{ backgroundImage: `url(https://grow2-s31.s3.us-east-2.amazonaws.com/${admin.logo_url})`}"
+              @click.native.prevent="toggleMenu">
+            </router-link>
+            <div class="Logo__content">
+              <p class="flat Logo__name">{{ admin.name }} <i class="fa Logo__arrow"
+                  :class="{ 'fa-chevron-down' : !menuVisible, 'fa-times' : menuVisible, 'Logo__arrow--open' : menuVisible }"></i>
+              </p>
+              <small class="Logo__small"> {{totalStudents}} members</small>
+            </div>
+            </router-link>
+            <div class="Logo__menu Menu" v-show="menuVisible">
+              <div @click="toggleModal('editProfile')" class="Menu__link">View profile</div>
+              <a href="/logout" class="Menu__link">
+                Sign out of {{ admin.name }}
+              </a>
+            </div>
+          </div>
+          <!-- <div class="Admin__banner">
+            {{ subscription.product.name }}
+            <router-link to="/subscription-plans" class="Admin__upgrade">{{
+              subscription.product.name === 'Complete Plan' ? 'View other plans' : 'Upgrade now'
+              }}</router-link>
+            <i class="fas fa-exclamation-square Admin__warning"></i>
+          </div> -->
+          <div class="Admin__banner Admin__banner--angry" v-show="subscriptionStatus === 'past_due'">
+            Payment overdue. Pay immediately.
+            <button class="Admin__upgrade">Pay now</button>
+            <i class="fas fa-exclamation-square Admin__warning"></i>
+          </div>
+        </div>
+        <div class="Admin__sidebar-body">
+          <div v-if="dashboardLoading" class="Loading">
+            <div class="Loading__title"></div>
+            <div class="Loading__group">
+              <div class="Loading__item"></div>
+              <div class="Loading__item"></div>
+              <div class="Loading__item"></div>
+              <div class="Loading__item"></div>
+            </div>
+            <div class="Loading__title"></div>
+            <div class="Loading__group">
+              <div class="Loading__item"></div>
+              <div class="Loading__item"></div>
+              <div class="Loading__item"></div>
+              <div class="Loading__item"></div>
+            </div>
+          </div>
+          <div class="Browse" v-show="!dashboardLoading">
+            <h4 class="Admin__sidebar-title">
+              Content
+              <i class="fal fa-plus" @click="toggleModal('addCourse')"></i>
+            </h4>
+            <div v-show="!courses.length">
+              <p class="ghosted">You have no content</p>
+            </div>
+            <CourseMenu icon="course" v-show="courses.length" @createCourse="showCourseModal = true" :items="courseMenu"
+              collection="Units"></CourseMenu>
+            <h4 class="Admin__sidebar-title">
+              Teams
+              <i class="fal fa-plus" @click="toggleModal('addBusiness')"></i>
+            </h4>
+            <div v-show="businesses.length === 1">
+              <p class="ghosted">You have no teams</p>
+            </div>
+            <CourseMenu icon="business" v-show="businesses.length > 1" @createCourse="showBusinessModal = true"
+              :items="businessMenu" collection="Members"></CourseMenu>
+            <h4 class="Admin__sidebar-title" v-show="admin.userType =='mentor'">
+              Member
+            </h4>
+            <CourseMenu icon="student" v-if="admin.userType =='mentor'" :items="membersMenu" collection=""></CourseMenu>
+          </div>
+          <!-- <div class="Admin__storage">
+            <p class="Admin__storage-label">{{ storageUsage.size }} of {{ subscription.product.metadata.storageLimit }}
+              used</p>
+            <ProgressBar :total="parseInt(subscription.product.metadata.storageInBytes)"
+              :completed="storageUsage.sizeInBytes" :show-label="false" :height="0.2" />
+          </div> -->
+          <div class="Admin__logout">
+            <!-- <a href="/logout" class="btn btn--text">
+              <i class="fal fa-sign-out"></i>
+              Sign out
+            </a> -->
+          </div>
+        </div>
+      </div>
+      <div class="Admin__main">
+        <div class="Admin__toolbar">
+          <Breadcrumbs :crumbs="breadcrumbs">
+          </Breadcrumbs>
+          <button class="btn btn--text btn--icon Admin__delete" @click="removeCourse" v-show="route.name === 'course'">
+            <i class="fal fa-trash-alt"></i>
+            Delete content
+          </button>
+          <button id="addSponsorbtn" class="btn btn--text btn--icon Admin__sponsor" @click="addSponsor"
+            v-show="route.name === 'course'">
+            <i class="fal fa-plus"></i>
+            Add Sponsor
+          </button>
+          <button class="btn btn--text btn--icon Admin__delete" @click="removeCard" v-show="route.name === 'card'">
+            <i class="fal fa-trash-alt"></i>
+            Delete card
+          </button>
+          <button class="btn Admin__invite primary-btn" @click="inviteStudent">
+            <!-- {{inviteButtonLabel}} -->
+            Invite
+          </button>
+          <button class="btn Admin__invite2" v-show="route.name === 'studentProfile'" @click="inviteMentor()">Invite
+            Mentor</button>
+          <div v-show="route.name === 'businessProfile'">
+            <button class="btn btn--text btn--icon Admin__delete" @click="removeBusiness">
+              <i class="fal fa-trash-alt"></i>
+              Delete team
+            </button>
+          </div>
+          <div v-show="route.name === 'studentProfile'">
+            <button class="btn btn--text btn--icon Admin__delete" @click="removeStudent">
+              <i class="fal fa-trash-alt"></i>
+              Delete member
+            </button>
+            <button class="btn btn--text btn--icon Admin__print" @click="printReport">
+              <i class="fal fa-print"></i>
+              Print report
+            </button>
+          </div>
+
+        </div>
+        <div class="Admin__view">
+          <StudentList v-if="route.name === 'dashboard'"></StudentList>
+          <StudentProfile v-if="route.name === 'studentProfile'"></StudentProfile>
+          <BusinessProfile v-if="route.name === 'businessProfile'"></BusinessProfile>
+          <!-- The following v-if is bad. -->
+          <Course ref="course" v-if="route.name === 'course' && currentCourse" :name="currentCourse.name"
+            :units="currentCourse.units"></Course>
+          <LearningCard v-if="route.name === 'card'"></LearningCard>
+          <SubscriptionPlanList v-if="route.name === 'subscriptionPlans'"></SubscriptionPlanList>
+        </div>
+      </div>
+    </div>
+    <AddBusiness v-show="modals.addBusiness" @close="toggleModal('addBusiness')"></AddBusiness>
+    <AddBusinessCourse v-show="modals.addBusinessCourse" @close="toggleModal('addBusinessCourse')"></AddBusinessCourse>
+    <AddCourse v-show="modals.addCourse" @close="toggleModal('addCourse')"></AddCourse>
+    <AddStudent v-show="modals.addStudent" @close="toggleModal('addStudent')"></AddStudent>
+    <AddStudentBusiness v-show="modals.addStudentBusiness" @close="toggleModal('addStudentBusiness')">
+    </AddStudentBusiness>
+    <AddStudentCourse v-show="modals.addStudentCourse" @close="toggleModal('addStudentCourse')"></AddStudentCourse>
+    <AddUnit v-show="modals.addUnit" @unit-added="handleUnitAdded" @close="toggleModal('addUnit')"></AddUnit>
+    <EditProfile v-show="modals.editProfile" @close="toggleModal('editProfile')"></EditProfile>
+    <RemoveAudio v-show="modals.removeAudio" @close="toggleModal('removeAudio')"></RemoveAudio>
+    <RemoveBusiness v-show="modals.removeBusiness" @close="toggleModal('removeBusiness')"></RemoveBusiness>
+    <RemoveBusinessCourse v-show="modals.removeBusinessCourse" @close="toggleModal('removeBusinessCourse')">
+    </RemoveBusinessCourse>
+    <RemoveCard v-show="modals.removeCard" @close="toggleModal('removeCard')"></RemoveCard>
+    <RemoveCourse v-show="modals.removeCourse" @close="toggleModal('removeCourse')"></RemoveCourse>
+    <RemoveStudent v-show="modals.removeStudent" @close="toggleModal('removeStudent')"></RemoveStudent>
+    <RemoveStudentBusiness v-show="modals.removeStudentBusiness" @close="toggleModal('removeStudentBusiness')">
+    </RemoveStudentBusiness>
+    <RemoveStudentCourse v-show="modals.removeStudentCourse" @close="toggleModal('removeStudentCourse')">
+    </RemoveStudentCourse>
+    <RemoveUnit v-show="modals.removeUnit" @close="toggleModal('removeUnit')"></RemoveUnit>
+    <RemoveVideo v-show="modals.removeVideo" @close="toggleModal('removeVideo')"></RemoveVideo>
+    <AddCard v-show="modals.addCard" @close="toggleModal('addCard')"></AddCard>
+    <CardType v-show="modals.cardType" @close="toggleModal('cardType')"></CardType>
+    <AddSponsor v-show="modals.addSponsor" @close="toggleModal('addSponsor')"></AddSponsor>
+    <MeetingCard v-show="modals.meetingCard" @close="toggleModal('meetingCard')"></MeetingCard>
+    <AddMentor v-show="modals.addMentor" @close="toggleModal('addMentor')"></AddMentor>
+    <Toast></Toast>
+  </div>
+</div>

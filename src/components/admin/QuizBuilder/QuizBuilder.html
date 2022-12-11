@@ -1,0 +1,54 @@
+<div class="QuizBuilder">
+
+  <div class="QuizBuilder__empty ghosted" v-if="questions.length === 0">
+    <p>A quiz allows students to demonstrate their understanding of this card's content. Once added, students must complete the quiz to progress to the next card.</p>
+  </div>
+
+  <div class="QuizBuilder__questions">
+    <div class="QuizBuilder__question Card"
+      v-if="questions.length"
+      v-for="(question, qIndex) in questions"
+      :key="qIndex"
+    >
+      <div class="Card__title">
+        <div class="flex__full">
+          <h4 class="pressed">Question {{ qIndex + 1 }}</h4>
+          <input type="text"
+            class="input"
+            :id="'question-' + qIndex"
+            @change="save"
+            v-model.lazy="question.question"
+            placeholder="Question"
+          >
+        </div>
+      </div>
+      <div class="Card__body">
+        <div class="QuizBuilder__answers">
+          <label class="label">Answers</label>
+          <div v-for="(answer, aIndex) in question.answers"
+            class="QuizBuilder__answer"
+            :key="aIndex"
+          >
+            <div class="QuizBuilder__delete-answer" v-if="aIndex > 0" @click.prevent="removeAnswer(qIndex, aIndex)">
+              <i class="fal fa-trash-alt"></i>
+            </div>
+            <textarea type="text"
+              class="input"
+              v-model.lazy="answer.text"
+              :id="'answer-' + qIndex + '-' + aIndex"
+              @change="save"
+              placeholder="Answer"
+            ></textarea>
+            <label class="QuizBuilder__toggle">
+              <input type="checkbox" class="toggle-check-input" v-model="answer.correct" @change="save" />
+              <span class="toggle-check-text"></span>
+            </label>
+          </div>
+          <div class="input QuizBuilder__add-answer" @click="addAnswer(qIndex)">Add answer</div>
+        </div>
+        <i class="fal fa-times QuizBuilder__remove-question" @click.prevent="removeQuestion(qIndex)"></i>
+      </div>
+    </div>
+  </div>
+  <span class="btn btn--standard Quiz__add-question" @click="addQuestion">{{questions.length > 0 ? 'Add question' : 'Create Quiz'}}</span>
+</div>

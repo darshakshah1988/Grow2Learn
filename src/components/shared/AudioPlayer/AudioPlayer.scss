@@ -1,0 +1,56 @@
+@import "../../../sass/variables.scss";
+
+.AudioPlayer {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  &:hover {
+    background-color: rgba(0,0,0,0.1);
+  }
+}
+
+.AudioPlayer__player {
+  position: absolute;
+  display: block;
+  width: 320px;
+  top: 100%;
+  right: 0;
+  z-index: 50;
+  background: #f1f3f4;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.25);
+}
+
+.AudioPlayer__btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 50px;
+  line-height: 50px !important;
+  text-align: center;
+  cursor: pointer;
+  background: $blue;
+  z-index: 10;
+  color: #fff;
+  box-shadow: 0 -5px 10px $blue;
+}
+
+@keyframes showExpand {
+  from {
+    opacity: 0;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-100%);
+  }
+}
+
+.AudioPlayer__action {
+  z-index: 5;
+  transition: all 200ms ease;
+}
+
+.AudioPlayer--running .AudioPlayer__action {
+  transform: translateX(-100%);
+}

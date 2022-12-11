@@ -1,0 +1,32 @@
+<div class="Wallpaper">
+  <div class="container container--small">
+       <Card slot="body" :title="route.params.role[0].toUpperCase() + route.params.role.slice(1) + ' Login'" :centered-title="true">
+      <form slot="body" @submit.prevent="login">
+        <div v-if="error" class="error">
+          {{errorMessage || 'Invalid Email/Password'}}
+        </div>
+        <div v-if="passwordResetSent" class="success">
+          Password Reset Email Sent
+        </div>
+        <div class="form__group">
+          <label class="label" for="email">Email</label>
+          <input type="email" class="input" id="email" v-model="email" required autocomplete="off" autofocus>
+        </div>
+        <div class="form__group" v-if="!forgot">
+          <label class="label" for="password">Password</label>
+          <input type="password" class="input" id="password" v-model="password" required autocomplete="off">
+        </div>
+        <div class="form__footer">
+          <button class="btn btn--block" :disabled="submitting">
+            {{forgot ? 'Email Password Reset' : 'Sign in'}}
+          </button>
+        </div>
+      </form>
+    </Card>
+    <div class="flex flex--guts">
+      <a class="btn btn--text btn--ondark" href="/#signup-section" v-if="route.params.role === 'trainer'">Create an Account</a>
+      <a class="btn btn--text btn--ondark" @click="forgot = true" v-if="!forgot">Forgot Password</a>
+      <a class="btn btn--text btn--ondark" @click="forgot = false" v-if="forgot">Back to Login</a>
+    </div>
+  </div>
+</div>

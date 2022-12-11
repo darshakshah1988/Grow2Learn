@@ -1,0 +1,66 @@
+<div class="StudentList">
+  <div hidden class="Filters">
+    <div class="Filters__wrap">
+      <small class="Filters__title">
+        Browse by
+      </small>
+      <div :class="{ 'Filters__option' : true, 'Filters__option--active' : studentListFilter === 'business' } " @click="setStudentListFilter('business')">
+        <i class="fal fa-briefcase"></i> Teams
+      </div>
+      <div :class="{ 'Filters__option' : true, 'Filters__option--active' : studentListFilter === 'course' } " @click="setStudentListFilter('course')">
+        <i class="fal fa-book"></i> Content
+      </div>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="flex__full">
+      <div v-show="dashboardLoading">
+        <div class="empty-content">
+          <div>
+            <h2 class="flat">Loading...</h2>
+            <p>Shouldn't take long. Thanks for your patience.</p>
+          </div>
+        </div>
+      </div>
+      <div v-show="!registeredStudents.length && !pendingStudents.length && !dashboardLoading">
+        <div class="empty-content">
+          <div>
+            <h2 class="flat">You have no members</h2>
+            <p>Invite a member and send them content you create.</p>
+            <button class="btn" @click="toggleModal('addStudent')">
+              Invite members
+            </button>
+          </div>
+        </div>
+      </div>
+      <div v-show="!registeredStudents.length && pendingStudents.length">
+        <div class="empty-content">
+          <div>
+            <h2 class="flat">No registered members</h2>
+            <p>Once your invited members complete the registration process, they will appear here.</p>
+          </div>
+        </div>
+      </div>
+      <div class="StudentList__wrap" v-show="registeredStudents.length">
+        <StudentTile
+          v-for="(student, i ) in registeredStudents"
+          :key="'student' + student.id"
+          :student="student">
+        </StudentTile>
+      </div>
+    </div>
+    <div class="StudentList__pending" v-show="pendingStudents.length">
+      <h4>Pending invitations</h4>
+      <router-link :key="'student' + student.id" class="non-link flex flex--aligned Pending" v-for="student in pendingStudents" :to="{ name: 'studentProfile', params: { studentId: student.id } }">
+        <div class="Pending__avatar">
+          <i class="icon student"></i>
+          <i class="fal fa-search"></i>
+        </div>
+        <div class="Pending__content">
+          <p class="flat Pending__title">{{ student.email }}</p>
+          <small>Invited {{ student.BusinessStudent.createdAt | moment("from" , true) }} ago</small>
+        </div>
+      </router-link>
+    </div>
+  </div>
+</div>

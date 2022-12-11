@@ -1,0 +1,17 @@
+@import "../../../sass/variables.scss";
+
+.StudentOnboard__title {
+  color: #fff;
+}
+
+.StudentOnboard__account {
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.25);
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+.StudentOnboard__email {
+  background: rgba(255,255,255,0.05);
+  border: 0;
+}

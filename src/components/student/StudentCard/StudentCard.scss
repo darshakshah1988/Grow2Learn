@@ -1,0 +1,203 @@
+@import "../../../sass/variables.scss";
+
+@keyframes showContent {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes showFooter {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.StudentCard::after {
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  z-index: -1;
+  content: url('/assets/img/correct.png') url('/assets/img/incorrect.png');
+}
+
+.StudentCard__task {
+  background: #f2f2f2;
+  padding: 2rem 0;
+  p:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.StudentCard {
+  background: $offWhite;
+  ul {
+    margin-left: 1rem;
+  }
+}
+
+.StudentCard__hero {
+  background: #222;
+}
+
+.StudentCard__main {
+  opacity: 0;
+  animation: showContent 200ms ease forwards;
+  overflow: hidden;
+}
+
+.StudentCard__title {
+  padding: 1rem;
+  margin-bottom: 0;
+  font-size: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.StudentCard__video {
+  width: 100%;
+  background: #111;
+  position: relative;
+  max-width: 720px;
+  margin: 0 auto;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: 56.25%;
+  }
+}
+
+.StudentCard__audio {
+  width: 100%;
+}
+
+.StudentCard__player {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.StudentCard__footer {
+  position: fixed;
+  background: #fff;
+  box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.25);
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 0.5rem 0;
+  transform: translateY(100%);
+  animation: showFooter 375ms 500ms ease forwards;
+  .btn {
+    flex: 1;
+    margin-left: 0.5rem;
+    &:first-child {
+      margin-left: 0;
+    }
+  }
+  .container {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+.StudentCard__modal {
+  position: fixed;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 200ms ease;
+  z-index: 600;
+}
+
+.StudentCard__content {
+  padding: 1rem 0;
+  padding-bottom: 52px;
+}
+
+.StudentCard__modal--quiz {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.StudentCard__modal--task {
+  opacity: 1;
+  transform: translateY(-100%);
+}
+
+.StudentCard__modal .Quiz {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: transform 375ms ease;
+  transform: translateY(100%);
+  flex: 1;
+}
+
+.StudentCard__modal .Task {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  transition: transform 375ms ease;
+  transform: translateY(100%);
+  flex: 1;
+}
+
+.StudentCard__modal--quiz .Quiz {
+  height: calc(100% - 1rem);
+  margin: 0 1rem;
+  transform: translateY(0);
+}
+
+.StudentCard__modal--task .Task {
+  margin: 0 1rem;
+  transform: translateY(0);
+}
+
+
+@media(min-width: 1000px) {
+
+  .StudentCard__footer .container {
+    justify-content: flex-end;
+  }
+
+  .StudentCard__footer .btn {
+    flex: unset;
+  }
+
+  .StudentCard__modal {
+    align-items: center;
+    justify-content: center;
+  }
+
+  .StudentCard__modal .Quiz {
+    height: auto;
+    position: relative;
+    transform: none;
+    width: 480px;
+    flex: none;
+    border-radius: 10px;
+  }
+}
+
+.meeetingBanner {
+  width:100%;
+  color:white;
+  text-align:center;
+}

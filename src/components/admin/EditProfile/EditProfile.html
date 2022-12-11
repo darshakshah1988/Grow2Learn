@@ -1,0 +1,93 @@
+<transition name="Modal">
+    <Modal widest @close="$emit('close')">
+      <Card slot="body" title="Edit profile">
+        <div slot="body" class="grid grid--one-two">
+          <div class="themes">
+            <h4>Select your theme</h4>
+            <Card slot="body">
+              <label class="Theme" :class="{ 'Theme--selected' : admin.theme === 'grow' }" for="grow" slot="body">
+                <img class="Theme__example" src="/assets/img/grow2.jpg" alt="">
+                <span class="Theme__name">
+                  Grow (default)
+                  <input
+                    type="radio"
+                    name="theme"
+                    value="grow"
+                    id="grow"
+                    @change="handleChange('grow')"
+                    :checked="admin.theme === 'grow'"
+                  >
+                </span>
+              </label>
+            </Card>
+            <Card slot="body">
+              <label class="Theme" :class="{ 'Theme--selected' : admin.theme === 'belong' }" for="belong" slot="body">
+                <img class="Theme__example" src="/assets/img/belong.jpg" alt="">
+                <span class="Theme__name">
+                  Belong
+                  <input
+                    type="radio"
+                    name="theme"
+                    id="belong"
+                    value="belong"
+                    @change="handleChange('belong')"
+                    :checked="admin.theme === 'belong'"
+                  >
+                </span>
+              </label>
+            </Card>
+            <Card slot="body">
+              <label class="Theme" :class="{ 'Theme--selected' : admin.theme === 'elevate' }" for="elevate" slot="body">
+                <img class="Theme__example" src="/assets/img/elevate.jpg" alt="">
+                <span class="Theme__name">
+                  Elevate
+                  <input
+                    type="radio"
+                    name="theme"
+                    id="elevate"
+                    value="elevate"
+                    @change="handleChange('elevate')"
+                    :checked="admin.theme === 'elevate'"
+                  >
+                </span>
+              </label>
+            </Card>
+            <Card slot="body">
+              <label class="Theme" :class="{ 'Theme--selected' : admin.theme === 'dark' }" for="dark" slot="body">
+                <img class="Theme__example" src="/assets/img/dark.jpg" alt="">
+                <span class="Theme__name">
+                  Dark
+                  <input
+                    type="radio"
+                    name="theme"
+                    id="dark"
+                    value="dark"
+                    @change="handleChange('dark')"
+                    :checked="admin.theme === 'dark'"
+                  >
+                </span>
+              </label>
+            </Card>
+          </div>
+          <div>
+            <h4>Organisation logo</h4>
+            <div class="logo-wrap">
+              <img v-if="admin.logo_url && !uploading" :src="`https://grow2-s31.s3.us-east-2.amazonaws.com/${admin.logo_url}`" class="logo-wrap__logo">
+              <div class="logo-wrap__container">
+                <i class="fa fa-spinner" v-show="uploading"></i>
+              </div>
+            </div>
+            <button class="btn btn--block btn--standard" id="pick-avatar">Upload logo</button>
+          </div>
+          <avatar-cropper 
+            class="uploader"
+            @uploaded="handleUploaded"
+            @uploading="handleUploading"
+            trigger="#pick-avatar"
+            upload-url="/admin/upload-logo"
+            :labels="labels"
+          />
+        </div>
+      </Card>
+    </Modal>
+  </transition>

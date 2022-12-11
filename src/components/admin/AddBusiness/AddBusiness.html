@@ -1,0 +1,22 @@
+<transition name="Modal">
+  <Modal @close="$emit('close')">
+    <Card slot="body" title="Create team">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <label class="label" for="-name">Team name</label>
+          <input type="text" class="input" id="-name" v-model="name" v-focus="modals.addBusiness" autocomplete="off" required>
+        </div>
+        <div class="form__group" v-show="courses.length">
+          <label class="label">Default content</label>
+          <label class="checkbox" :for="'add--course-item-' + index" v-for="(course, index) in courses">
+            <input type="checkbox" :id="'add--course-item-' + index" :value="course.id" v-model="courseIds">
+            {{ course.name }}
+          </label>
+        </div>
+        <div class="form__footer">
+          <button class="btn btn--block" :disabled="submitting">Create</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

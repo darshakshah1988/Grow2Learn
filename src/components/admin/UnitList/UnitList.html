@@ -1,0 +1,54 @@
+<div :class="{ 'UnitList': true, 'UnitList--empty': !cards.length }">
+  <header class="UnitList__head">
+    <i class="icon unit" v-show="!editing"></i>
+    <h4 class="flat UnitList__title" v-show="!editing">{{ name }}</h4>
+    <input class="input UnitList__title" @blur="editing = false" ref="textarea" type="input" v-show="editing" @keypress="handleKeypress" :value="name" />
+    <div class="div UnitList__options" v-show="!editing">
+      <i class="fas fa-caret-down UnitList__dots" @click.stop="toggleMenu"></i>
+      <div class="UnitList__menu" v-show="menuOpen">
+        <div class="UnitList__menu-option" @click="edit">Edit name</div>
+        <div class="UnitList__menu-option" @click="removeUnit">Delete</div>
+      </div>
+    </div>
+  </header>
+  <div class="UnitList__Loader" v-show="loading">
+    <div class="sk-fading-circle">
+      <div class="sk-circle1 sk-circle"></div>
+      <div class="sk-circle2 sk-circle"></div>
+      <div class="sk-circle3 sk-circle"></div>
+      <div class="sk-circle4 sk-circle"></div>
+      <div class="sk-circle5 sk-circle"></div>
+      <div class="sk-circle6 sk-circle"></div>
+      <div class="sk-circle7 sk-circle"></div>
+      <div class="sk-circle8 sk-circle"></div>
+      <div class="sk-circle9 sk-circle"></div>
+      <div class="sk-circle10 sk-circle"></div>
+      <div class="sk-circle11 sk-circle"></div>
+      <div class="sk-circle12 sk-circle"></div>
+    </div>
+  </div>
+  <div v-show="!loading">
+    <div class="UnitList__body" v-if="cards.length">
+      <SlickList lockAxis="y" v-model="cards" @input="sortCards">
+        <SlickItem v-for="(card, index) in cards" :index="index" :key="'slick-item-' + card.id" class="UnitList__card">
+            <router-link
+              :key="'card-link-' + card.id"
+              :to="{ name: 'card', params: { courseId: route.params.courseId, unitId: unitId, cardId: card.id }}"
+            >
+              <Card :key="card.id" class="flat 123" :title="format_date(card)"></Card>
+            </router-link>
+        </SlickItem>
+      </SlickList>
+    </div>
+
+    <div class="UnitList__footer">
+      <form @submit.prevent="submit" slot="body" class="UnitList__new-card" v-show="addingCard">
+        <div class="Card">
+          <input type="text" class="input" v-focus="addingCard" id="cardName" ref="cardName" v-model="cardName" placeholder="Card name" autocomplete="off" required>
+        </div>
+        <button class="btn btn--block">Save</button>
+      </form>
+      <button class="btn btn--block btn--standard Course__action" @click="cardType">Add a card</button>
+    </div>
+  </div>
+</div>

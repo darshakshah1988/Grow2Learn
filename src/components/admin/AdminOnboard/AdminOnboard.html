@@ -1,0 +1,34 @@
+<div class="StudentOnboard">
+  <div class="container container--small">
+    <div class="Logo Logo--large Logo--centered">
+      <i class="Logo__icon"></i>
+    </div>
+    <div class="text-centered">
+      <div class="form__group StudentOnboard__account">
+        <h2 class="StudentOnboard__title">Set your password</h2>
+        <p class="small pressed">{{firstName}}, please set your password below to continue.</p>
+      </div>
+    </div>
+    <div class="Card">
+      <div class="Card__body">
+        <form slot="body" @submit.prevent="submit">
+          <div class="form__group">
+            <label class="label" for="student-email">Email</label>
+            <input type="email" disabled class="input" id="student-email" :value="email">
+          </div>
+          <div class="form__group">
+            <label class="label" for="student-password">Password</label>
+            <input type="password" class="input" id="student-password" v-model="password">
+          </div>
+          <div class="form__group">
+            <label class="label" for="student-password-confirm">Confirm password</label>
+            <input type="password" class="input" id="student-password-confirm" v-model="passwordConfirm">
+          </div>
+          <div class="form__footer">
+            <button class="btn btn--block" :disabled="submitting">Save</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

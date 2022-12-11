@@ -1,0 +1,56 @@
+<div :class="{
+    'StudentHeader' : true,
+    'StudentHeader--clear' : $route.name === 'studentCourse'
+    }">
+  <router-link :class="{ 'StudentHeader__logo--back' : $route.name != 'studentHome' }" class="Logo flat StudentHeader__logo" :to="backLink">
+    <div class="Logo__icon"></div>
+  </router-link>
+  <div :class="{
+    'StudentHeader__wrap' : true,
+    'StudentHeader__wrap--home' : $route.name === 'studentHome',
+    'StudentHeader__wrap--course' : $route.name === 'studentCourse',
+    'StudentHeader__wrap--card' : $route.name === 'studentCard',
+    }">
+    <h1 class="StudentHeader__title flat">Assigned content</h1>
+    <a class="StudentHeader__course flat">
+      <i class="icon course"></i>
+      {{ courseName }}
+    </a>
+    <div class="StudentHeader__unit-card">
+      <h3 class="StudentHeader__unit flat">{{ activeStudentCard.name }}</h3>
+      <h4 class="StudentHeader__card flat">{{ activeStudentUnitName }}</h4>
+    </div>
+  </div>
+  <div style="display: flex">
+    <AudioPlayer ref="player" v-if="activeStudentCard.audio"></AudioPlayer>
+    <div class="Notification">
+      <a href="/logout" style="color:white;text-decoration:none;font-weight:bold"><i class="fa fa-sign-out" aria-hidden="true"></i></a>
+      <transition name="slide-fade">
+        <!-- Header Navigation Menu Icons -->
+        <button class="Notification__trigger" v-if="show" key="on" @click="show = false">
+          <i class="fal fa-times Notification__icon"></i>
+        </button>
+        <button class="Notification__trigger" v-else key="off" @click="show = true">
+          
+          <i class="fal fa-bell Notification__icon"></i>
+          <span class="Notification__badge">{{ notificationCount }}</span>
+        </button>
+        
+      </transition>
+      <!-- Dropdown Menu -->
+      <transition name="dropdown">
+        <div class="dropdown__menu" v-bind:class="{ active: show }" v-if="show">
+          <h4 class="dropdown__menu-heading">Notifications</h4>
+          <ul class="dropdown__menu-nav">
+            <li class="dropdown__menu-item" v-for="notification in notifications">
+              <a href="#" class="dropdown__menu-link">
+                <p class="dropdown__menu-text" v-html="notification.message"></p>
+                <small class="dropdown__menu-desc">{{ notification.createdAt | moment('from') }}</small>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </transition>
+    </div>
+  </div>
+</div>

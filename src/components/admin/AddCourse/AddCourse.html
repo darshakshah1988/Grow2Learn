@@ -1,0 +1,22 @@
+<transition name="Modal">
+  <Modal @close="$emit('close')">
+    <Card slot="body" title="Create content">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <label class="label" for="course-name">Name</label>
+          <input type="text" class="input" id="course-name" v-focus="modals.addCourse" autocomplete="off" v-model="name" required>
+        </div>
+        <div class="form__group" v-show="businesses.length > 1">
+          <label class="label">Auto-assign to members from</label>
+          <label class="checkbox" v-for="(business, index) in businesses" v-if="index > 0">
+            <input type="checkbox" :id="index" :value="business.id" @click="checkUncheck(index)" v-model="businessIds">
+            {{ business.name }}
+          </label>
+        </div>
+        <div class="form__footer">
+          <button class="btn btn--block" :disabled="submitting">Create</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

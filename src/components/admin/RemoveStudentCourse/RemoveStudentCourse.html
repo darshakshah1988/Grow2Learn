@@ -1,0 +1,15 @@
+<transition name="Modal">
+  <Modal wide @close="$emit('close')">
+    <Card slot="body" title="Are you sure you want to remove content?">
+      <form @submit.prevent="submit" slot="body">
+        <div class="form__group">
+          <p><strong>{{ activeStudentProfile.first_name }} {{ activeStudentProfile.last_name }}</strong> will no longer have access to this content and any progress made will be lost forever.</p>
+        </div>
+        <div class="form__footer form__footer--end">
+          <span class="btn btn--standard" @click="$emit('close')">Cancel</span>
+          <button class="btn btn--danger" :disabled="submitting">Remove</button>
+        </div>
+      </form>
+    </Card>
+  </Modal>
+</transition>

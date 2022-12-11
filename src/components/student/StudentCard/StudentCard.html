@@ -1,0 +1,100 @@
+<div class="StudentCard" v-if="activeStudentCard.cardType != 'meeting'">
+  <div class="StudentCard__main">
+    <div class="StudentCard__hero">
+      <div class="StudentCard__video" v-if="activeStudentCard.videoId">
+        <iframe
+          v-if="activeStudentCard.mediaId == '10'"
+          ref="youtube"
+          frameborder="0" 
+          allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="StudentCard__player"
+          :src="activeStudentCard.videoId">
+        </iframe>
+        <video ref="video" v-else @contextmenu="handleContextMenu" controlsList="nodownload" controls class="StudentCard__player" ></video>
+      </div>
+    </div>
+    <div class="StudentCard__content">
+      <div class="container">
+        <div v-html="activeStudentCard.content"></div>
+      </div>
+      <div class="StudentCard__task" v-show="activeStudentCard.evidence_task">
+        <div class="container">
+          <h2 class="flat">Practical task</h2>
+          <p class="small">Your trainer has assigned a practical task for this card. This task will help you further understand the content shared in this card.</p>
+          <div class="well well--bordered flat">
+            <div v-html="activeStudentCard.evidence_task"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="StudentCard__footer">
+    <div class="container">
+      <div class="btn"
+          v-if="!parsedQuestions.length && activeStudentCard.nextCardId"
+          @click="nextCard"
+          >Next card</div>
+      <button class="btn" @click="quizVisible = true" v-if="parsedQuestions.length">Take quiz</button>
+      <div class="btn"
+          v-if="!parsedQuestions.length && !activeStudentCard.nextCardId"
+          @click="nextCard"
+          >Complete Unit</div>
+    </div>
+  </div>
+  <div :class="{ 'StudentCard__modal' : true, 'StudentCard__modal--quiz' : quizVisible, 'StudentCard__modal--task' : taskVisible }">
+    <Quiz @finish="handleFinish" @close="quizVisible = false" @showTask="quizVisible = false; taskVisible = true" :hasTask="activeStudentCard.evidence_task && activeStudentCard.evidence_task.length > 0" :questions="parsedQuestions" :next-card-id="activeStudentCard.nextCardId"></Quiz>
+  </div>
+</div>
+<div class="StudentCard" v-else>
+  <div class="StudentCard__main">
+    <div class="StudentCard__hero">
+      <h3 class="meeetingBanner">Meeting | {{ activeStudentCard.location }} | {{ activeStudentCard.time }}</h3>
+      <div class="StudentCard__video" v-if="activeStudentCard.videoId">
+        <video ref="video" @contextmenu="handleContextMenu" controlsList="nodownload" controls class="StudentCard__player" ></video>
+      </div>
+    </div>
+    <div class="StudentCard__content" v-if="activeStudentCard.cardType == 'meeting'">
+      <div class="container">
+        <h3>Attendees:</h3>
+        <p>
+        <ul>
+          <li v-if="parsedAttendees" v-for="attendee in parsedAttendees">{{attendee.name}} | {{attendee.role}}</li>
+        </ul>
+        </p>
+        <h3>Agenda</h3>
+        <ul>
+          <li v-for="agenda in parsedAgenda">{{ agenda.topic }}   - <a href='#'>{{ agenda.actions[0].text }}</a></li>
+        </ul>
+        <p>
+
+        </p>
+        <div v-html="activeStudentCard.content"></div>
+      </div>
+      <div class="StudentCard__task" v-show="activeStudentCard.evidence_task">
+        <div class="container">
+          
+          <div class="well well--bordered flat">
+            <div v-html="activeStudentCard.evidence_task"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="StudentCard__footer">
+    <div class="container">
+      <div class="btn"
+          v-if="!parsedQuestions.length && activeStudentCard.nextCardId"
+          @click="nextCard"
+          >Next card</div>
+      <button class="btn" @click="quizVisible = true" v-if="parsedQuestions.length">Take quiz</button>
+      <div class="btn"
+          v-if="!parsedQuestions.length && !activeStudentCard.nextCardId"
+          @click="nextCard"
+          >Complete Unit</div>
+    </div>
+  </div>
+  <div :class="{ 'StudentCard__modal' : true, 'StudentCard__modal--quiz' : quizVisible, 'StudentCard__modal--task' : taskVisible }">
+    <Quiz @finish="handleFinish" @close="quizVisible = false" @showTask="quizVisible = false; taskVisible = true" :hasTask="activeStudentCard.evidence_task && activeStudentCard.evidence_task.length > 0" :questions="parsedQuestions" :next-card-id="activeStudentCard.nextCardId"></Quiz>
+  </div>
+</div>
