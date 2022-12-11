@@ -1,7 +1,7 @@
 Welcome {{name}},
 
-https://adminohapp.com/confirm?token={{token}}
+https://grow2learn.com.au/confirm?token={{token}}
 
 Regards,
-Adminoh
+Grow2learn
  

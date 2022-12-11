@@ -122,7 +122,7 @@ app.post("/register", (req, res) => {
             cc: "smartdarshak88@gmail.com",
             to: "contact@adminoh.com",
             from: mail.FROM,
-            subject: "New Registration to Adminoh",
+            subject: "New Registration to Grow2Learn",
             text: mail.registration.text(mailData),
             html: mail.registration.html(mailData)
           },

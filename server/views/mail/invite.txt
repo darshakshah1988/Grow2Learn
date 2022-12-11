@@ -4,7 +4,7 @@ You have been invited to Adminoh.
 
 If the above link does not work, paste the following URL in your browser:
 
-https://adminohapp.com/invite?token={{token}}
+https://grow2learn.com.au/invite?token={{token}}
 
 Regards,
-Adminoh
+Grow2Learn

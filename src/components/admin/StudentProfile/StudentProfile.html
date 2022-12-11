@@ -18,8 +18,8 @@
           </span>
           <!-- <router-link :to="{name: 'card', params: { cardId: activity.cardId } }" v-if="activity.cardId">Card: #{{ activity.cardId }}</router-link> -->
         </p>
-        <p class="small" v-if="activeStudentProfile.businesses && activeStudentProfile.first_name"><i class="fal fa-clock Activity__icon"></i> {{ activeStudentProfile.first_name }} was invited to Adminoh<span class="Activity__time">{{ activeStudentProfile.businesses[0].BusinessStudent.createdAt | moment("from", true) }} ago</span></p>
-        <p class="small" v-if="activeStudentProfile.businesses && !activeStudentProfile.first_name"><i class="fal fa-clock Activity__icon"></i> {{ activeStudentProfile.email }} was invited to Adminoh<span class="Activity__time">{{ activeStudentProfile.businesses[0].BusinessStudent.createdAt | moment("from", true) }} ago</span></p>
+        <p class="small" v-if="activeStudentProfile.businesses && activeStudentProfile.first_name"><i class="fal fa-clock Activity__icon"></i> {{ activeStudentProfile.first_name }} was invited to Grow2Learn<span class="Activity__time">{{ activeStudentProfile.businesses[0].BusinessStudent.createdAt | moment("from", true) }} ago</span></p>
+        <p class="small" v-if="activeStudentProfile.businesses && !activeStudentProfile.first_name"><i class="fal fa-clock Activity__icon"></i> {{ activeStudentProfile.email }} was invited to Grow2Learn<span class="Activity__time">{{ activeStudentProfile.businesses[0].BusinessStudent.createdAt | moment("from", true) }} ago</span></p>
       </div>
     </div>
     <div>
